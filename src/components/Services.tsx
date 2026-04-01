@@ -74,9 +74,9 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="px-6 py-24 md:px-10 md:pt-20 md:pb-[180px]">
+    <section id="services" className="px-6 py-16 md:px-10 md:pt-16 md:pb-24">
       <div className="mx-auto max-w-[1100px]">
-        <div ref={headerRef} className="mb-20 text-center opacity-0 md:mb-24">
+        <div ref={headerRef} className="mb-12 text-center opacity-0 md:mb-16">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
             What we do
           </span>

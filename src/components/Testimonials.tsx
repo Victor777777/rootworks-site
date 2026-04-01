@@ -71,7 +71,7 @@ export default function Testimonials() {
   const current = quotes[active];
 
   return (
-    <section id="testimonials" className="px-6 py-24 md:px-10 md:py-[180px]">
+    <section id="testimonials" className="px-6 py-16 md:px-10 md:py-24">
       <div
         ref={sectionRef}
         className="mx-auto max-w-[800px] text-center opacity-0"

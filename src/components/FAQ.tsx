@@ -151,9 +151,9 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section id="faq" className="bg-bg-warm px-6 py-24 md:px-10 md:py-[180px]">
+    <section id="faq" className="bg-bg-warm px-6 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[720px]">
-        <div ref={headerRef} className="mb-16 opacity-0 md:mb-20">
+        <div ref={headerRef} className="mb-10 opacity-0 md:mb-12">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
             Questions
           </span>

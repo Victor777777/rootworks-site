@@ -184,11 +184,11 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="bg-bg-warm py-24 md:py-[180px]"
+      className="bg-bg-warm py-16 md:py-24"
     >
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         {/* Header */}
-        <div ref={headerRef} className="mb-14 opacity-0 md:mb-16">
+        <div ref={headerRef} className="mb-8 opacity-0 md:mb-10">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
             Selected work
           </span>
