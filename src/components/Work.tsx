@@ -25,14 +25,14 @@ const projects: Project[] = [
     logos: ["nextdotjs", "react", "framer", "vercel"],
   },
   {
-    image: "/work/training.jpg",
-    category: "AI Training",
-    logos: ["openai", "anthropic", "canva", "google"],
-  },
-  {
     image: "/work/n8n-itops.png",
     category: "IT Ops Automation",
     logos: ["n8n", "openai", "slack", "jira", "docker"],
+  },
+  {
+    image: "/work/training.jpg",
+    category: "AI Training",
+    logos: ["openai", "anthropic", "canva", "google"],
   },
   {
     image: "/work/n8n-devops.png",
@@ -116,33 +116,6 @@ export default function Work() {
     };
   }, [emblaApi]);
 
-  // Auto-advance every 8s, pause on hover
-  useEffect(() => {
-    if (!emblaApi) return;
-    let timer: ReturnType<typeof setInterval>;
-    let paused = false;
-
-    const start = () => {
-      timer = setInterval(() => {
-        if (!paused) emblaApi.scrollNext();
-      }, 8000);
-    };
-
-    const rootNode = emblaApi.rootNode();
-    const onEnter = () => { paused = true; };
-    const onLeave = () => { paused = false; };
-
-    rootNode.addEventListener("mouseenter", onEnter);
-    rootNode.addEventListener("mouseleave", onLeave);
-    start();
-
-    return () => {
-      clearInterval(timer);
-      rootNode.removeEventListener("mouseenter", onEnter);
-      rootNode.removeEventListener("mouseleave", onLeave);
-    };
-  }, [emblaApi]);
-
   /* Scroll reveal */
   useEffect(() => {
     if (!headerRef.current || !carouselAreaRef.current) return;
@@ -212,18 +185,18 @@ export default function Work() {
           </div>
         </div>
 
-        {/* Arrows — pushed to viewport edges, vertically centered on image area */}
+        {/* Arrows — centered on the image area (image is ~85% of card, so 42% from top) */}
         <button
           onClick={scrollPrev}
           aria-label="Previous project"
-          className="absolute top-[35%] -left-4 z-20 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 text-text-dim shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-text md:block lg:-left-8"
+          className="absolute top-[42%] -left-4 z-20 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 text-text-dim shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-text md:block lg:-left-8"
         >
           <ChevronLeft size={20} />
         </button>
         <button
           onClick={scrollNext}
           aria-label="Next project"
-          className="absolute top-[35%] -right-4 z-20 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 text-text-dim shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-text md:block lg:-right-8"
+          className="absolute top-[42%] -right-4 z-20 hidden -translate-y-1/2 rounded-full bg-white/80 p-3 text-text-dim shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white hover:text-text md:block lg:-right-8"
         >
           <ChevronRight size={20} />
         </button>

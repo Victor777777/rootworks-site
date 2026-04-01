@@ -28,7 +28,7 @@ export default function CallToAction() {
   }, []);
 
   return (
-    <section id="cta" className="px-6 py-16 md:px-10 md:py-20">
+    <section id="cta" className="px-6 py-12 md:px-10 md:py-16">
       <div
         ref={sectionRef}
         className="mx-auto max-w-[1100px] text-center opacity-0"

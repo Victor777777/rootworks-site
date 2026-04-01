@@ -5,11 +5,6 @@ import { gsap, EASE_PRIMARY } from "@/lib/gsap";
 
 const quotes = [
   {
-    text: "I had no technical background. The idea was clear — help patients track clinical trials — but I had no way to build it. AI-powered development made the impossible possible. From concept to live SaaS with payments, AI pipeline, and automated SEO in weeks, not years.",
-    author: "Victor L.",
-    role: "Founder, TrialsAlert",
-  },
-  {
     text: "Root Works delivered our complete site in 4 days. The quality would have taken any traditional agency 3 months.",
     author: "Sarah M.",
     role: "Marketing Director",
@@ -28,7 +23,6 @@ export default function Testimonials() {
 
   const animateQuote = useCallback(() => {
     if (!quoteRef.current) return;
-    // moreair: 1.2s fade with power3.out
     gsap.fromTo(
       quoteRef.current,
       { opacity: 0, y: "2vw" },
@@ -71,7 +65,7 @@ export default function Testimonials() {
   const current = quotes[active];
 
   return (
-    <section id="testimonials" className="px-6 py-16 md:px-10 md:py-24">
+    <section id="testimonials" className="px-6 py-12 md:px-10 md:py-16">
       <div
         ref={sectionRef}
         className="mx-auto max-w-[800px] text-center opacity-0"
