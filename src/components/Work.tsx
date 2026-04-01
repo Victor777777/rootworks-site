@@ -34,11 +34,6 @@ const projects: Project[] = [
     category: "AI Training",
     logos: ["openai", "anthropic", "canva", "google"],
   },
-  {
-    image: "/work/n8n-devops.png",
-    category: "DevOps Automation",
-    logos: ["n8n", "openai", "supabase", "resend", "github"],
-  },
 ];
 
 /* ── Slide ── */

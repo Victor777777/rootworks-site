@@ -8,25 +8,25 @@ const steps = [
     num: "01.",
     title: "Align",
     description:
-      "30-minute call. We understand your goals, audience, and constraints. Fixed price and timeline before a single line of code.",
+      "30-minute call.\nWe understand your goals, audience, and constraints. Fixed price and timeline before a single line of code.",
   },
   {
     num: "02.",
     title: "Build",
     description:
-      "AI-powered development with daily updates. You see progress in real-time via preview URLs. Feedback in the morning, new version by evening.",
+      "AI-powered development with daily updates. You see progress in real-time via our preview URL. Feedback in the morning, new version by evening.",
   },
   {
     num: "03.",
     title: "Refine",
     description:
-      "You review every detail. Nothing goes live without your approval. We iterate until you're satisfied — no revision limits.",
+      "You review every detail. Nothing goes live without your approval. We iterate until you are satisfied.",
   },
   {
     num: "04.",
     title: "Deploy",
     description:
-      "Live on your custom domain. GitHub repo, Vercel hosting, HTTPS, CDN. You own 100% of the code. We hand you the keys.",
+      "Live on your custom domain. GitHub repo, Vercel hosting, HTTPS, CDN.\nYou own 100% of the code.\nWe hand you the keys.",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function Process() {
               <h3 className="mt-2 text-[17px] font-medium text-text">
                 {step.title}
               </h3>
-              <p className="mt-2 text-[14px] font-light leading-relaxed text-text-dim">
+              <p className="mt-2 whitespace-pre-line text-[14px] font-light leading-relaxed text-text-dim">
                 {step.description}
               </p>
             </article>

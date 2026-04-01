@@ -7,7 +7,7 @@ import { ChevronDown } from "lucide-react";
 const questions = [
   {
     q: "What do you actually do?",
-    a: "We design and build websites, web apps, AI automations, and SEO systems. We also train teams to work with AI. Everything ships production-ready — no PDFs, no handoffs.",
+    a: "We design and build websites, web apps, AI automations, and SEO systems. We also train teams to work with AI. Everything ships production-ready. No PDFs, no handoffs.",
   },
   {
     q: "How fast can you deliver?",
@@ -15,7 +15,7 @@ const questions = [
   },
   {
     q: "What does AI-native mean?",
-    a: "AI is built into how we work, not bolted on. We use it across development, design, content, and automation. It's why a two-person operation delivers the output of a 10-person agency — without the overhead.",
+    a: "AI is built into how we work, not bolted on. We use it across development, design, content, and automation. That's why a two-person operation delivers the output of a 10-person agency, without the overhead.",
   },
   {
     q: "How does pricing work?",
@@ -23,7 +23,7 @@ const questions = [
   },
   {
     q: "Do I own the code?",
-    a: "100%. You get the full GitHub repo, Vercel deployment, domain configuration, documentation — everything. We hand you the keys.",
+    a: "100%. You get the full GitHub repo, Vercel deployment, domain configuration, and documentation. We hand you the keys.",
   },
   {
     q: "Can you train our team?",
@@ -31,7 +31,7 @@ const questions = [
   },
   {
     q: "What's your ideal project?",
-    a: "Something ambitious with people who care about quality. Whether it's a new product from scratch or optimizing something that exists, we want to shape the direction early — not just execute a spec.",
+    a: "Something ambitious with people who care about quality. Whether it's a new product from scratch or optimizing something that exists, we want to shape the direction early, not just execute a spec.",
   },
 ];
 
@@ -46,7 +46,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
     setOpen(next);
 
     if (next) {
-      // Expand: measure natural height, animate max-height
       answerRef.current.style.display = "block";
       const h = answerRef.current.scrollHeight;
       gsap.fromTo(
@@ -60,7 +59,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         }
       );
     } else {
-      // Collapse
       gsap.to(answerRef.current, {
         maxHeight: 0,
         opacity: 0,
@@ -72,7 +70,6 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       });
     }
 
-    // moreair icon: rotate 90deg + fade, 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     gsap.to(iconRef.current, {
       rotation: next ? 180 : 0,
       duration: 0.4,

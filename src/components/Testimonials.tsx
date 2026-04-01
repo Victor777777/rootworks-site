@@ -5,13 +5,13 @@ import { gsap, EASE_PRIMARY } from "@/lib/gsap";
 
 const quotes = [
   {
-    text: "Root Works delivered our complete site in 4 days. The quality would have taken any traditional agency 3 months.",
-    author: "Sarah M.",
+    text: "With a single intervention, we gained the equivalent of \u20AC37,000 in annual value through optimized workflows, protocols, and tools.",
+    author: "Camille D.",
     role: "Marketing Director",
   },
   {
-    text: "The AI training transformed how our team works. We went from zero AI usage to having it embedded in our daily workflow.",
-    author: "Camille D.",
+    text: "It completely changed the way we work. We now produce in days what used to take us a full week.",
+    author: "Sarah M.",
     role: "Marketing Lead",
   },
 ];
@@ -84,7 +84,7 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-10 flex items-center justify-center gap-2">
+        <div className="mt-8 flex items-center justify-center gap-2">
           {quotes.map((_, i) => (
             <button
               key={i}
