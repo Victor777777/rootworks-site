@@ -1,38 +1,36 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, EASE_PRIMARY } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 
 const services = [
   {
-    num: "01",
     title: "Build",
     subtitle: "You have an idea. We make it real.",
     description:
       "Websites, web apps, mobile apps. From artist portfolios to full-stack SaaS platforms with authentication, payments, and dashboards. Every project gets a unique design system built from scratch. No templates, no themes. From no-code and low-code to full custom, delivered ready to use.",
   },
   {
-    num: "02",
-    title: "Optimize",
+    title: "Rank",
     subtitle: "You have a product. Now you need to be found.",
     description:
       "We provide advanced SEO and AI search optimization for your product to rank where it belongs. From Google to ChatGPT and every major LLM. Technical audits, schema markup, programmatic pages, content architecture. We audit, implement, and deliver the changes for you.",
   },
   {
-    num: "03",
     title: "Automate",
     subtitle: "You\u2019re generating revenue. You could generate much more.",
     description:
       "Custom AI pipelines and workflow automations. Content generation, data processing, email sequences, CRM integrations, you name it. From no-code tools to fully custom pipelines, we build systems that run on their own after setup. You free precious time to allocate to what matters.",
   },
   {
-    num: "04",
     title: "Train",
     subtitle: "Your team could do twice as much with the right tools.",
     description:
       "Hands-on AI training for marketing and business teams, on-site or remote. Prompt engineering, content generation, image creation, video editing, data analysis. Every module uses your real data and actual workflows. Your team walks out producing in hours what used to take days. Training your team is now profitable, earning you days to months of saved workload.",
   },
 ];
+
+const EASE = "cubic-bezier(0.215, 0.61, 0.355, 1)";
 
 export default function Services() {
   const headerRef = useRef<HTMLDivElement>(null);
@@ -44,27 +42,25 @@ export default function Services() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         headerRef.current,
-        { opacity: 0, y: "10vw" },
+        { opacity: 0, y: 40 },
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
-          delay: 0.25,
-          ease: EASE_PRIMARY,
+          duration: 1.2,
+          ease: "power3.out",
           scrollTrigger: { trigger: headerRef.current, start: "top 90%" },
         }
       );
 
       gsap.fromTo(
         gridRef.current!.children,
-        { opacity: 0, y: "10vw" },
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
           duration: 1.2,
-          ease: EASE_PRIMARY,
-          stagger: 0.1,
-          delay: 0.25,
+          ease: "power3.out",
+          stagger: 0.12,
           scrollTrigger: { trigger: gridRef.current, start: "top 90%" },
         }
       );
@@ -74,7 +70,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="px-6 py-16 md:px-10 md:pt-16 md:pb-24">
+    <section id="services" className="px-6 py-16 md:px-10 md:pt-8 md:pb-24">
       <div className="mx-auto max-w-[1100px]">
         <div ref={headerRef} className="mb-12 text-center opacity-0 md:mb-16">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -87,25 +83,24 @@ export default function Services() {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 gap-0 md:grid-cols-2"
+          className="grid grid-cols-1 gap-5 md:grid-cols-2"
         >
-          {services.map((service, i) => (
+          {services.map((service) => (
             <article
-              key={service.num}
-              className={`border-t border-border py-10 opacity-0 md:py-12 ${
-                i % 2 === 1 ? "md:pl-16" : "md:pr-16"
-              }`}
+              key={service.title}
+              className="group cursor-default rounded-2xl border border-[rgba(0,0,0,0.06)] p-8 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.12)] hover:bg-white hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
+              style={{ transitionTimingFunction: EASE }}
             >
-              <span className="font-heading text-[15px] text-text-muted">
-                {service.num}
-              </span>
-              <h3 className="mt-2 font-heading text-[26px] text-text">
+              <h3
+                className="font-heading text-[clamp(28px,4vw,42px)] leading-[1.1] text-text transition-transform duration-500 group-hover:-translate-y-1"
+                style={{ transitionTimingFunction: EASE }}
+              >
                 {service.title}
               </h3>
-              <p className="mt-2 text-[14px] font-medium italic text-text-dim">
+              <p className="mt-3 font-heading text-[clamp(18px,2.5vw,24px)] italic leading-[1.4] text-text transition-opacity duration-500 group-hover:opacity-100 md:opacity-70">
                 {service.subtitle}
               </p>
-              <p className="mt-3 max-w-[480px] text-[15px] font-light leading-relaxed text-text-dim">
+              <p className="mt-4 max-w-[480px] text-[16px] font-light leading-relaxed text-text-dim">
                 {service.description}
               </p>
             </article>
