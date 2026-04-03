@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, EASE_PRIMARY } from "@/lib/gsap";
 
 const stageLabels = [
@@ -11,37 +11,40 @@ const stageLabels = [
   "We nurture every stage",
 ];
 
+const TOTAL_STAGES = stageLabels.length;
+const LOCK_MS = 800;
+
 function DesktopHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLSpanElement>(null);
-  const prevStageRef = useRef(-1);
-  const [currentStage, setCurrentStage] = useState(0);
+
+  const stageRef = useRef(0);
+  const isAnimating = useRef(false);
+  const isPinned = useRef(false);
+  const stInstance = useRef<ScrollTrigger | null>(null);
+
+  const [activeStage, setActiveStage] = useState(0);
   const [textVisible, setTextVisible] = useState(false);
 
-  // When currentStage changes, do a brief opacity dip then show new text
-  const isFirstRender = useRef(true);
+  // Text crossfade on stage change
+  const isFirst = useRef(true);
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    if (isFirst.current) {
+      isFirst.current = false;
       return;
     }
-    // Dip out
     setTextVisible(false);
-    const timer = setTimeout(() => {
-      // Text content already updated via state, now fade back in
-      setTextVisible(true);
-    }, 150);
-    return () => clearTimeout(timer);
-  }, [currentStage]);
+    const t = setTimeout(() => setTextVisible(true), 150);
+    return () => clearTimeout(t);
+  }, [activeStage]);
 
   useEffect(() => {
     const video = videoRef.current;
     const section = sectionRef.current;
     if (!video || !section) return;
 
-    // Entrance animation
+    // Entrance
     const entranceTl = gsap.timeline({ defaults: { ease: EASE_PRIMARY } });
     entranceTl
       .fromTo(
@@ -51,54 +54,136 @@ function DesktopHero() {
       )
       .add(() => setTextVisible(true), 0.8);
 
-    const setupScrollVideo = () => {
-      const duration = video.duration;
-      if (!duration || !isFinite(duration)) return;
+    // Wait for video metadata
+    const setup = () => {
+      const dur = video.duration;
+      if (!dur || !isFinite(dur)) return;
 
-      prevStageRef.current = 0;
+      // Set initial frame
+      video.currentTime = 0;
 
-      ScrollTrigger.create({
+      // Pin the section — NO scrub, NO snap. We control everything manually.
+      stInstance.current = ScrollTrigger.create({
         id: "hero-pin",
         trigger: section,
         start: "top top",
-        end: "+=300%",
-        scrub: true,
+        // Large end distance so there's scroll runway to "consume"
+        end: "+=400%",
         pin: true,
         anticipatePin: 1,
-        snap: {
-          snapTo: [0, 0.2, 0.4, 0.6, 0.8, 1],
-          duration: { min: 0.4, max: 0.8 },
-          ease: "power2.inOut",
+        onEnter: () => {
+          isPinned.current = true;
         },
-        onUpdate: (self) => {
-          const progress = self.progress;
-
-          // Scrub video
+        onLeave: () => {
+          isPinned.current = false;
+        },
+        onEnterBack: () => {
+          isPinned.current = true;
+          // Re-entering from below: reset to last stage
+          stageRef.current = TOTAL_STAGES - 1;
+          setActiveStage(TOTAL_STAGES - 1);
           if (video.readyState >= 2) {
-            video.currentTime = progress * duration;
+            video.currentTime = dur;
           }
-
-          // Determine stage from progress
-          const newStage = Math.min(4, Math.floor(progress * 5));
-
-          // Only update when stage actually changes
-          if (newStage !== prevStageRef.current) {
-            prevStageRef.current = newStage;
-            setCurrentStage(newStage);
-          }
+        },
+        onLeaveBack: () => {
+          isPinned.current = false;
         },
       });
+
+      const goToStage = (nextStage: number) => {
+        if (nextStage < 0 || nextStage >= TOTAL_STAGES) return;
+        if (isAnimating.current) return;
+
+        isAnimating.current = true;
+        stageRef.current = nextStage;
+        setActiveStage(nextStage);
+
+        const targetTime = (nextStage / (TOTAL_STAGES - 1)) * dur;
+        gsap.to(video, {
+          currentTime: targetTime,
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            isAnimating.current = false;
+          },
+        });
+      };
+
+      // Wheel handler — one scroll = one stage
+      const handleWheel = (e: WheelEvent) => {
+        if (!isPinned.current) return;
+        if (isAnimating.current) {
+          e.preventDefault();
+          return;
+        }
+
+        const direction = e.deltaY > 0 ? 1 : -1;
+        const nextStage = stageRef.current + direction;
+
+        // At boundaries, let ScrollTrigger handle pin/unpin naturally
+        if (nextStage >= TOTAL_STAGES) {
+          // Let scroll pass through — ScrollTrigger will unpin
+          isPinned.current = false;
+          return;
+        }
+        if (nextStage < 0) {
+          // Let scroll pass through upward
+          isPinned.current = false;
+          return;
+        }
+
+        // Consume the scroll event — we handle it
+        e.preventDefault();
+        goToStage(nextStage);
+      };
+
+      // Touch handler for mobile-like trackpad gestures within desktop
+      let touchStartY = 0;
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStartY = e.touches[0].clientY;
+      };
+      const handleTouchEnd = (e: TouchEvent) => {
+        if (!isPinned.current || isAnimating.current) return;
+        const deltaY = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(deltaY) < 30) return;
+
+        const direction = deltaY > 0 ? 1 : -1;
+        const nextStage = stageRef.current + direction;
+
+        if (nextStage >= TOTAL_STAGES || nextStage < 0) {
+          isPinned.current = false;
+          return;
+        }
+
+        e.preventDefault();
+        goToStage(nextStage);
+      };
+
+      window.addEventListener("wheel", handleWheel, { passive: false });
+      window.addEventListener("touchstart", handleTouchStart, { passive: true });
+      window.addEventListener("touchend", handleTouchEnd, { passive: false });
+
+      return () => {
+        window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener("touchstart", handleTouchStart);
+        window.removeEventListener("touchend", handleTouchEnd);
+      };
     };
 
+    let cleanupListeners: (() => void) | undefined;
+
     if (video.readyState >= 1) {
-      setupScrollVideo();
+      cleanupListeners = setup();
     } else {
-      video.addEventListener("loadedmetadata", setupScrollVideo, {
-        once: true,
-      });
+      const onMeta = () => {
+        cleanupListeners = setup();
+      };
+      video.addEventListener("loadedmetadata", onMeta, { once: true });
     }
 
     return () => {
+      cleanupListeners?.();
       ScrollTrigger.getById("hero-pin")?.kill();
     };
   }, []);
@@ -127,14 +212,13 @@ function DesktopHero() {
             />
           </div>
 
-          {/* Single text overlay — only one DOM element, text swaps via state */}
+          {/* Single text overlay */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <span
-              ref={textRef}
               className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text transition-opacity duration-300"
               style={{ opacity: textVisible ? 1 : 0 }}
             >
-              {stageLabels[currentStage]}
+              {stageLabels[activeStage]}
             </span>
           </div>
         </div>
