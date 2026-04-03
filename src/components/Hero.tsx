@@ -1,22 +1,40 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { gsap, ScrollTrigger, EASE_PRIMARY } from "@/lib/gsap";
 
-const stages = [
-  { label: "We build your wildest dreams", start: 0, end: 0.2 },
-  { label: "From idea", start: 0.2, end: 0.4 },
-  { label: "To seed", start: 0.4, end: 0.6 },
-  { label: "To growth", start: 0.6, end: 0.8 },
-  { label: "We nurture every stage", start: 0.8, end: 1.0 },
+const stageLabels = [
+  "We build your wildest dreams",
+  "From idea",
+  "To seed",
+  "To growth",
+  "We nurture every stage",
 ];
 
 function DesktopHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
-  const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const activeStageRef = useRef(-1);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const prevStageRef = useRef(-1);
+  const [currentStage, setCurrentStage] = useState(0);
+  const [textVisible, setTextVisible] = useState(false);
+
+  // When currentStage changes, do a brief opacity dip then show new text
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    // Dip out
+    setTextVisible(false);
+    const timer = setTimeout(() => {
+      // Text content already updated via state, now fade back in
+      setTextVisible(true);
+    }, 150);
+    return () => clearTimeout(timer);
+  }, [currentStage]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -31,18 +49,13 @@ function DesktopHero() {
         { opacity: 0, y: "3vw" },
         { opacity: 1, y: 0, duration: 2, delay: 0.25 }
       )
-      .fromTo(
-        overlayRefs.current[0],
-        { opacity: 0 },
-        { opacity: 1, duration: 1.2 },
-        0.6
-      );
+      .add(() => setTextVisible(true), 0.8);
 
     const setupScrollVideo = () => {
       const duration = video.duration;
       if (!duration || !isFinite(duration)) return;
 
-      activeStageRef.current = 0;
+      prevStageRef.current = 0;
 
       ScrollTrigger.create({
         id: "hero-pin",
@@ -65,35 +78,13 @@ function DesktopHero() {
             video.currentTime = progress * duration;
           }
 
-          // Determine which stage we're in
-          let newStage = stages.length - 1;
-          for (let i = 0; i < stages.length; i++) {
-            if (progress < stages[i].end) {
-              newStage = i;
-              break;
-            }
-          }
+          // Determine stage from progress
+          const newStage = Math.min(4, Math.floor(progress * 5));
 
-          // Only update DOM when stage actually changes
-          if (newStage !== activeStageRef.current) {
-            const prevStage = activeStageRef.current;
-            activeStageRef.current = newStage;
-
-            // Hide ALL overlays instantly
-            overlayRefs.current.forEach((el) => {
-              if (el) gsap.set(el, { opacity: 0 });
-            });
-
-            // Fade in the new stage
-            const newEl = overlayRefs.current[newStage];
-            if (newEl) {
-              gsap.to(newEl, {
-                opacity: 1,
-                duration: 0.4,
-                ease: "power2.out",
-                overwrite: true,
-              });
-            }
+          // Only update when stage actually changes
+          if (newStage !== prevStageRef.current) {
+            prevStageRef.current = newStage;
+            setCurrentStage(newStage);
           }
         },
       });
@@ -136,20 +127,16 @@ function DesktopHero() {
             />
           </div>
 
-          {/* Stage text overlays — centered on video */}
-          {stages.map((stage, i) => (
-            <div
-              key={stage.label}
-              ref={(el) => {
-                overlayRefs.current[i] = el;
-              }}
-              className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0"
+          {/* Single text overlay — only one DOM element, text swaps via state */}
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <span
+              ref={textRef}
+              className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text transition-opacity duration-300"
+              style={{ opacity: textVisible ? 1 : 0 }}
             >
-              <span className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text">
-                {stage.label}
-              </span>
-            </div>
-          ))}
+              {stageLabels[currentStage]}
+            </span>
+          </div>
         </div>
       </div>
     </section>
