@@ -116,7 +116,7 @@ function DesktopHero() {
           ref={videoWrapRef}
           className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl opacity-0 shadow-[0_8px_60px_rgba(0,0,0,0.06)]"
         >
-          <div className="aspect-[16/10]">
+          <div className="aspect-[16/10] overflow-hidden">
             <video
               ref={videoRef}
               src="/hero-video.mp4"
@@ -124,7 +124,11 @@ function DesktopHero() {
               playsInline
               preload="auto"
               className="h-full w-full object-cover"
-              style={{ backgroundColor: "#E8E6E1" }}
+              style={{
+                backgroundColor: "#E8E6E1",
+                filter: "saturate(0.85)",
+                transform: "scale(1.05)",
+              }}
             />
           </div>
 
