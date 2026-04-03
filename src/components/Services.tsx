@@ -71,7 +71,7 @@ export default function Services() {
 
   return (
     <section id="services" className="px-6 py-16 md:px-10 md:pt-8 md:pb-24">
-      <div className="mx-auto max-w-[1100px]">
+      <div className="mx-auto max-w-[1240px]">
         <div ref={headerRef} className="mb-12 text-center opacity-0 md:mb-16">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
             What we do
@@ -83,12 +83,12 @@ export default function Services() {
 
         <div
           ref={gridRef}
-          className="grid grid-cols-1 gap-5 md:grid-cols-2"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2"
         >
           {services.map((service) => (
             <article
               key={service.title}
-              className="group cursor-default rounded-2xl border border-[rgba(0,0,0,0.06)] p-8 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.12)] hover:bg-white hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
+              className="group cursor-default rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-8 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
               style={{ transitionTimingFunction: EASE }}
             >
               <h3
@@ -100,7 +100,7 @@ export default function Services() {
               <p className="mt-3 font-heading text-[clamp(18px,2.5vw,24px)] italic leading-[1.4] text-text transition-opacity duration-500 group-hover:opacity-100 md:opacity-70">
                 {service.subtitle}
               </p>
-              <p className="mt-4 max-w-[480px] text-[16px] font-light leading-relaxed text-text-dim">
+              <p className="mt-4 text-[16px] font-light leading-relaxed text-text-dim">
                 {service.description}
               </p>
             </article>

@@ -16,6 +16,7 @@ function DesktopHero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
   const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const activeStageRef = useRef(-1);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,62 +42,60 @@ function DesktopHero() {
       const duration = video.duration;
       if (!duration || !isFinite(duration)) return;
 
-      const proxy = { time: 0 };
+      activeStageRef.current = 0;
 
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          id: "hero-pin",
-          trigger: section,
-          start: "top top",
-          end: "+=300%",
-          scrub: true,
-          pin: true,
-          anticipatePin: 1,
-          snap: {
-            snapTo: [0, 0.2, 0.4, 0.6, 0.8, 1],
-            duration: { min: 0.4, max: 0.8 },
-            ease: "power2.inOut",
-          },
+      ScrollTrigger.create({
+        id: "hero-pin",
+        trigger: section,
+        start: "top top",
+        end: "+=300%",
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        snap: {
+          snapTo: [0, 0.2, 0.4, 0.6, 0.8, 1],
+          duration: { min: 0.4, max: 0.8 },
+          ease: "power2.inOut",
         },
-      });
+        onUpdate: (self) => {
+          const progress = self.progress;
 
-      // Scrub video currentTime across full timeline
-      scrollTl.to(proxy, {
-        time: duration,
-        ease: "none",
-        duration: 1,
-        onUpdate: () => {
+          // Scrub video
           if (video.readyState >= 2) {
-            video.currentTime = proxy.time;
+            video.currentTime = progress * duration;
+          }
+
+          // Determine which stage we're in
+          let newStage = stages.length - 1;
+          for (let i = 0; i < stages.length; i++) {
+            if (progress < stages[i].end) {
+              newStage = i;
+              break;
+            }
+          }
+
+          // Only update DOM when stage actually changes
+          if (newStage !== activeStageRef.current) {
+            const prevStage = activeStageRef.current;
+            activeStageRef.current = newStage;
+
+            // Hide ALL overlays instantly
+            overlayRefs.current.forEach((el) => {
+              if (el) gsap.set(el, { opacity: 0 });
+            });
+
+            // Fade in the new stage
+            const newEl = overlayRefs.current[newStage];
+            if (newEl) {
+              gsap.to(newEl, {
+                opacity: 1,
+                duration: 0.4,
+                ease: "power2.out",
+                overwrite: true,
+              });
+            }
           }
         },
-      });
-
-      // Text crossfades — each stage fades in then fades out with slight overlap
-      stages.forEach((stage, i) => {
-        const el = overlayRefs.current[i];
-        if (!el) return;
-
-        const fadeDur = 0.06;
-
-        // Fade in (skip for stage 0, it's already visible from entrance)
-        if (i > 0) {
-          scrollTl.fromTo(
-            el,
-            { opacity: 0 },
-            { opacity: 1, duration: fadeDur, ease: "none" },
-            stage.start
-          );
-        }
-
-        // Fade out before next stage starts (skip for last stage)
-        if (i < stages.length - 1) {
-          scrollTl.to(
-            el,
-            { opacity: 0, duration: fadeDur, ease: "none" },
-            stage.end - fadeDur
-          );
-        }
       });
     };
 
@@ -144,9 +143,7 @@ function DesktopHero() {
               ref={(el) => {
                 overlayRefs.current[i] = el;
               }}
-              className={`pointer-events-none absolute inset-0 flex items-center justify-center ${
-                i === 0 ? "opacity-0" : "opacity-0"
-              }`}
+              className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0"
             >
               <span className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text">
                 {stage.label}
