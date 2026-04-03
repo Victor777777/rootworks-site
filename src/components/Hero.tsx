@@ -11,19 +11,11 @@ const stageLabels = [
   "We nurture every stage",
 ];
 
-const TOTAL_STAGES = stageLabels.length;
-const LOCK_MS = 800;
-
 function DesktopHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
-
-  const stageRef = useRef(0);
-  const isAnimating = useRef(false);
-  const isPinned = useRef(false);
-  const stInstance = useRef<ScrollTrigger | null>(null);
-
+  const prevStageRef = useRef(0);
   const [activeStage, setActiveStage] = useState(0);
   const [textVisible, setTextVisible] = useState(false);
 
@@ -54,136 +46,60 @@ function DesktopHero() {
       )
       .add(() => setTextVisible(true), 0.8);
 
-    // Wait for video metadata
     const setup = () => {
       const dur = video.duration;
       if (!dur || !isFinite(dur)) return;
 
-      // Set initial frame
       video.currentTime = 0;
 
-      // Pin the section — NO scrub, NO snap. We control everything manually.
-      stInstance.current = ScrollTrigger.create({
-        id: "hero-pin",
-        trigger: section,
-        start: "top top",
-        // Large end distance so there's scroll runway to "consume"
-        end: "+=400%",
-        pin: true,
-        anticipatePin: 1,
-        onEnter: () => {
-          isPinned.current = true;
-        },
-        onLeave: () => {
-          isPinned.current = false;
-        },
-        onEnterBack: () => {
-          isPinned.current = true;
-          // Re-entering from below: reset to last stage
-          stageRef.current = TOTAL_STAGES - 1;
-          setActiveStage(TOTAL_STAGES - 1);
-          if (video.readyState >= 2) {
-            video.currentTime = dur;
-          }
-        },
-        onLeaveBack: () => {
-          isPinned.current = false;
+      const proxy = { time: 0 };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: "hero-pin",
+          trigger: section,
+          start: "top top",
+          end: "+=300%",
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+          snap: {
+            snapTo: [0, 0.2, 0.4, 0.6, 0.8, 1],
+            duration: { min: 0.4, max: 0.8 },
+            ease: "power2.inOut",
+          },
         },
       });
 
-      const goToStage = (nextStage: number) => {
-        if (nextStage < 0 || nextStage >= TOTAL_STAGES) return;
-        if (isAnimating.current) return;
+      tl.to(proxy, {
+        time: dur,
+        ease: "none",
+        duration: 1,
+        onUpdate: () => {
+          if (video.readyState >= 2) {
+            video.currentTime = proxy.time;
+          }
 
-        isAnimating.current = true;
-        stageRef.current = nextStage;
-        setActiveStage(nextStage);
+          const st = tl.scrollTrigger;
+          if (!st) return;
+          const progress = st.progress;
+          const newStage = Math.min(4, Math.floor(progress * 5));
 
-        const targetTime = (nextStage / (TOTAL_STAGES - 1)) * dur;
-        gsap.to(video, {
-          currentTime: targetTime,
-          duration: 0.8,
-          ease: "power2.inOut",
-          onComplete: () => {
-            isAnimating.current = false;
-          },
-        });
-      };
-
-      // Wheel handler — one scroll = one stage
-      const handleWheel = (e: WheelEvent) => {
-        if (!isPinned.current) return;
-        if (isAnimating.current) {
-          e.preventDefault();
-          return;
-        }
-
-        const direction = e.deltaY > 0 ? 1 : -1;
-        const nextStage = stageRef.current + direction;
-
-        // At boundaries, let ScrollTrigger handle pin/unpin naturally
-        if (nextStage >= TOTAL_STAGES) {
-          // Let scroll pass through — ScrollTrigger will unpin
-          isPinned.current = false;
-          return;
-        }
-        if (nextStage < 0) {
-          // Let scroll pass through upward
-          isPinned.current = false;
-          return;
-        }
-
-        // Consume the scroll event — we handle it
-        e.preventDefault();
-        goToStage(nextStage);
-      };
-
-      // Touch handler for mobile-like trackpad gestures within desktop
-      let touchStartY = 0;
-      const handleTouchStart = (e: TouchEvent) => {
-        touchStartY = e.touches[0].clientY;
-      };
-      const handleTouchEnd = (e: TouchEvent) => {
-        if (!isPinned.current || isAnimating.current) return;
-        const deltaY = touchStartY - e.changedTouches[0].clientY;
-        if (Math.abs(deltaY) < 30) return;
-
-        const direction = deltaY > 0 ? 1 : -1;
-        const nextStage = stageRef.current + direction;
-
-        if (nextStage >= TOTAL_STAGES || nextStage < 0) {
-          isPinned.current = false;
-          return;
-        }
-
-        e.preventDefault();
-        goToStage(nextStage);
-      };
-
-      window.addEventListener("wheel", handleWheel, { passive: false });
-      window.addEventListener("touchstart", handleTouchStart, { passive: true });
-      window.addEventListener("touchend", handleTouchEnd, { passive: false });
-
-      return () => {
-        window.removeEventListener("wheel", handleWheel);
-        window.removeEventListener("touchstart", handleTouchStart);
-        window.removeEventListener("touchend", handleTouchEnd);
-      };
+          if (newStage !== prevStageRef.current) {
+            prevStageRef.current = newStage;
+            setActiveStage(newStage);
+          }
+        },
+      });
     };
 
-    let cleanupListeners: (() => void) | undefined;
-
     if (video.readyState >= 1) {
-      cleanupListeners = setup();
+      setup();
     } else {
-      const onMeta = () => {
-        cleanupListeners = setup();
-      };
-      video.addEventListener("loadedmetadata", onMeta, { once: true });
+      video.addEventListener("loadedmetadata", setup, { once: true });
     }
 
     return () => {
-      cleanupListeners?.();
       ScrollTrigger.getById("hero-pin")?.kill();
     };
   }, []);
@@ -212,7 +128,7 @@ function DesktopHero() {
             />
           </div>
 
-          {/* Single text overlay */}
+          {/* Single text overlay — one DOM element, text swaps via state */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <span
               className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text transition-opacity duration-300"
