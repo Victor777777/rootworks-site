@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, ScrollTrigger, EASE_PRIMARY } from "@/lib/gsap";
 
 const stageLabels = [
@@ -15,26 +15,18 @@ function DesktopHero() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const videoWrapRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
   const prevStageRef = useRef(0);
-  const [activeStage, setActiveStage] = useState(0);
-  const [textVisible, setTextVisible] = useState(false);
-
-  // Text crossfade on stage change
-  const isFirst = useRef(true);
-  useEffect(() => {
-    if (isFirst.current) {
-      isFirst.current = false;
-      return;
-    }
-    setTextVisible(false);
-    const t = setTimeout(() => setTextVisible(true), 150);
-    return () => clearTimeout(t);
-  }, [activeStage]);
 
   useEffect(() => {
     const video = videoRef.current;
     const section = sectionRef.current;
-    if (!video || !section) return;
+    const textEl = textRef.current;
+    if (!video || !section || !textEl) return;
+
+    // Initialize text at stage 0, hidden (entrance will fade it in)
+    textEl.textContent = stageLabels[0];
+    textEl.style.opacity = "0";
 
     // Entrance
     const entranceTl = gsap.timeline({ defaults: { ease: EASE_PRIMARY } });
@@ -44,7 +36,10 @@ function DesktopHero() {
         { opacity: 0, y: "3vw" },
         { opacity: 1, y: 0, duration: 2, delay: 0.25 }
       )
-      .add(() => setTextVisible(true), 0.8);
+      .add(() => {
+        textEl.style.transition = "opacity 0.6s ease";
+        textEl.style.opacity = "1";
+      }, 0.8);
 
     const setup = () => {
       const dur = video.duration;
@@ -87,7 +82,19 @@ function DesktopHero() {
 
           if (newStage !== prevStageRef.current) {
             prevStageRef.current = newStage;
-            setActiveStage(newStage);
+
+            // Instant hide, no transition
+            textEl.style.transition = "none";
+            textEl.style.opacity = "0";
+
+            // Swap text while hidden, then fade in
+            setTimeout(() => {
+              textEl.textContent = stageLabels[newStage];
+              requestAnimationFrame(() => {
+                textEl.style.transition = "opacity 0.3s ease";
+                textEl.style.opacity = "1";
+              });
+            }, 80);
           }
         },
       });
@@ -132,14 +139,12 @@ function DesktopHero() {
             />
           </div>
 
-          {/* Single text overlay — one DOM element, text swaps via state */}
+          {/* Single text overlay — one DOM element, direct DOM manipulation */}
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <span
-              className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text transition-opacity duration-300"
-              style={{ opacity: textVisible ? 1 : 0 }}
-            >
-              {stageLabels[activeStage]}
-            </span>
+              ref={textRef}
+              className="px-8 text-center font-heading text-[clamp(40px,7vw,80px)] leading-[0.95] tracking-[-3px] text-text"
+            />
           </div>
         </div>
       </div>
