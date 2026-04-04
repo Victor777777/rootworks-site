@@ -18,9 +18,16 @@ export default function Footer() {
   return (
     <footer id="footer" className="border-t border-border px-6 py-8 md:px-10">
       <div className="mx-auto flex max-w-[1100px] flex-col items-center justify-between gap-4 md:flex-row">
-        <p className="text-[13px] text-text-muted">
-          &copy; 2026 Root Works
-        </p>
+        <div className="flex items-center gap-3">
+          <img
+            src="/logo-sprout.png"
+            alt="Root Works"
+            className="h-6 w-auto opacity-50"
+          />
+          <p className="text-[13px] text-text-muted">
+            &copy; 2026 Root Works
+          </p>
+        </div>
 
         <div className="flex items-center gap-5">
           <a

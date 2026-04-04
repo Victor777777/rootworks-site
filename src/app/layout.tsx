@@ -21,6 +21,10 @@ export const metadata: Metadata = {
   title: "Root Works — AI-Powered Agency",
   description:
     "We design, build, and ship from concept to code. Websites, apps, automations, and AI training — shipped in days, not months.",
+  icons: {
+    icon: "/logo-sprout.png",
+    apple: "/logo-sprout.png",
+  },
   openGraph: {
     title: "Root Works — AI-Powered Agency",
     description:
@@ -29,12 +33,14 @@ export const metadata: Metadata = {
     siteName: "Root Works",
     locale: "en_US",
     type: "website",
+    images: ["/logo-full.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Root Works — AI-Powered Agency",
     description:
       "We design, build, and ship from concept to code. Shipped in days, not months.",
+    images: ["/logo-full.png"],
   },
   metadataBase: new URL("https://rootworks.ai"),
   alternates: {

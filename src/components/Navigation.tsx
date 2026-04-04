@@ -51,8 +51,17 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6 md:px-10">
-        <a href="#" className="font-heading text-lg tracking-tight text-text">
-          rootworks
+        <a href="#" aria-label="Root Works home" className="flex items-center">
+          <img
+            src="/logo-full.png"
+            alt="Root Works"
+            className="hidden h-10 w-auto md:block"
+          />
+          <img
+            src="/logo-sprout.png"
+            alt="Root Works"
+            className="h-8 w-auto md:hidden"
+          />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
