@@ -50,17 +50,17 @@ export default function Navigation() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6 md:px-10">
+      <div className="mx-auto flex h-20 max-w-[1100px] items-center justify-between px-6 md:px-10">
         <a href="#" aria-label="Root Works home" className="flex items-center">
           <img
             src="/logo-full.png"
             alt="Root Works"
-            className="hidden h-10 w-auto md:block"
+            className="hidden h-14 w-auto md:block"
           />
           <img
             src="/logo-sprout.png"
             alt="Root Works"
-            className="h-8 w-auto md:hidden"
+            className="h-10 w-auto md:hidden"
           />
         </a>
 
@@ -77,7 +77,9 @@ export default function Navigation() {
         </div>
 
         <a
-          href="#cta"
+          href="https://calendly.com/victor-rootworks"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full bg-text px-6 py-2.5 text-sm font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90"
         >
           Book a Call

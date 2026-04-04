@@ -37,7 +37,7 @@ export default function Footer() {
             contact@rootworks.ai
           </a>
           <a
-            href="https://wa.me/YOURNUMBER"
+            href="https://wa.me/33615092919"
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-muted transition-colors duration-[400ms] hover:text-text"
@@ -46,7 +46,7 @@ export default function Footer() {
             <WhatsAppIcon />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/victor-lafforgue"
             target="_blank"
             rel="noopener noreferrer"
             className="text-text-muted transition-colors duration-[400ms] hover:text-text"
