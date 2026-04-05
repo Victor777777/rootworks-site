@@ -1,0 +1,467 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - paragraph [ref=e4]:
+      - text: We use cookies to improve your experience.
+      - link "Cookie policy" [ref=e5] [cursor=pointer]:
+        - /url: /cookie
+    - generic [ref=e6]:
+      - button "Decline" [ref=e7] [cursor=pointer]
+      - button "Accept" [ref=e8] [cursor=pointer]
+  - generic [ref=e9]:
+    - banner [ref=e10]:
+      - generic [ref=e11]:
+        - link "TrialsAlert - Clinical Trial Monitoring TrialsAlert" [ref=e12] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e13]:
+            - img "TrialsAlert - Clinical Trial Monitoring" [ref=e14]
+            - generic [ref=e15]: TrialsAlert
+        - navigation [ref=e16]:
+          - link "How it works" [ref=e17] [cursor=pointer]:
+            - /url: "#how-it-works"
+          - link "The Problem" [ref=e18] [cursor=pointer]:
+            - /url: "#features"
+          - link "Pricing" [ref=e19] [cursor=pointer]:
+            - /url: "#pricing"
+          - link "FAQ" [ref=e20] [cursor=pointer]:
+            - /url: "#faq"
+        - generic [ref=e21]:
+          - button "Log in" [ref=e22] [cursor=pointer]
+          - button "Sign Up" [ref=e23] [cursor=pointer]
+    - main [ref=e24]:
+      - generic [ref=e27]:
+        - generic [ref=e28]: Now tracking 3,529 new trials this week
+        - heading "Stay ahead of the science. For you, or someone you love." [level=1] [ref=e30]:
+          - text: Stay ahead of the science.
+          - text: For you, or someone you love.
+        - paragraph [ref=e31]:
+          - text: TrialsAlert tracks the scientific progress of your condition every week.
+          - text: Thousands of clinical trials, classified by impact, delivered as a clear briefing you can actually understand.
+        - generic [ref=e32]:
+          - button "See a briefing example" [ref=e33] [cursor=pointer]
+          - link "Start monitoring" [ref=e34] [cursor=pointer]:
+            - /url: /signup
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - img [ref=e39]:
+              - generic [ref=e40]: ClinicalTrials
+              - generic [ref=e41]: .gov
+            - img [ref=e43]
+            - img [ref=e48]:
+              - generic [ref=e49]: FDA
+            - img [ref=e51]:
+              - generic [ref=e52]: Pub
+              - generic [ref=e53]: Med
+            - img [ref=e55]:
+              - generic [ref=e56]: ClinicalTrials
+              - generic [ref=e57]: .gov
+            - img [ref=e59]
+            - img [ref=e64]:
+              - generic [ref=e65]: FDA
+            - img [ref=e67]:
+              - generic [ref=e68]: Pub
+              - generic [ref=e69]: Med
+          - generic [ref=e70]:
+            - img [ref=e72]:
+              - generic [ref=e73]: ClinicalTrials
+              - generic [ref=e74]: .gov
+            - img [ref=e76]
+            - img [ref=e81]:
+              - generic [ref=e82]: FDA
+            - img [ref=e84]:
+              - generic [ref=e85]: Pub
+              - generic [ref=e86]: Med
+            - img [ref=e88]:
+              - generic [ref=e89]: ClinicalTrials
+              - generic [ref=e90]: .gov
+            - img [ref=e92]
+            - img [ref=e97]:
+              - generic [ref=e98]: FDA
+            - img [ref=e100]:
+              - generic [ref=e101]: Pub
+              - generic [ref=e102]: Med
+        - generic [ref=e104]: Sourced from official government databases
+      - generic [ref=e106]:
+        - paragraph [ref=e107]: Here's what a type 2 diabetes subscriber received last Friday.
+        - generic [ref=e108]:
+          - button "Type 2 Diabetes 1 major finding 3 notable findings" [ref=e109] [cursor=pointer]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: Type 2 Diabetes
+              - generic [ref=e113]: 1 major finding
+              - generic [ref=e115]: 3 notable findings
+            - img [ref=e117]
+          - generic [ref=e122]:
+            - paragraph [ref=e123]: This week brought an important development in type 2 diabetes research. A Phase 3 trial (NCT05189444) is now recruiting across 72 sites for a once-weekly oral GLP-1 receptor agonist tablet. Early data show meaningful HbA1c reductions alongside significant weight loss, with a tolerability profile that may suit patients who struggle with injectable therapies.
+            - paragraph [ref=e124]: "Two additional studies are also worth noting: a Phase 2 trial investigating a dual GIPR/GLP-1R agonist in patients with insulin resistance, and a gut microbiome intervention study examining how specific bacterial strains influence glucose regulation in people with newly diagnosed type 2 diabetes."
+            - paragraph [ref=e125]: Overall, the research landscape is active, with particular momentum around combination therapies that target both glycemic control and metabolic health. If you are managing blood sugar with current medications and haven't seen the results you hoped for, these developments are worth discussing with your endocrinologist.
+            - generic [ref=e126]:
+              - generic [ref=e127]: 1 breakthrough
+              - generic [ref=e128]: 3 notable
+              - generic [ref=e129]: 12 routine
+            - generic [ref=e130]:
+              - link "View all matched trials" [ref=e131] [cursor=pointer]:
+                - /url: /signup
+                - img [ref=e132]
+                - text: View all matched trials
+              - link "Share with my doctor" [ref=e134] [cursor=pointer]:
+                - /url: /signup
+                - img [ref=e135]
+                - text: Share with my doctor
+        - generic [ref=e137]:
+          - paragraph [ref=e138]: This is what you get. Every week. For your condition.
+          - link "Start monitoring" [ref=e139] [cursor=pointer]:
+            - /url: /signup
+      - generic [ref=e142]:
+        - heading "How it works" [level=2] [ref=e144]
+        - generic [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]:
+              - generic [ref=e148]: Step 1
+              - heading "Enter your condition" [level=3] [ref=e149]
+              - paragraph [ref=e150]: Type any medical condition. Our AI instantly maps it to the correct medical terminology, synonyms, and related treatments to ensure comprehensive monitoring.
+            - generic [ref=e151]:
+              - generic [ref=e152]: Type 2 Diabetes
+              - generic [ref=e153]:
+                - img [ref=e154]
+                - generic [ref=e156]: "Also matching: T2DM, adult-onset diabetes, insulin resistance, HbA1c, GLP-1, metformin..."
+              - generic [ref=e157]:
+                - generic [ref=e158]: Endocrinology
+                - generic [ref=e159]: Metabolic
+                - generic [ref=e160]: Diabetes
+          - generic [ref=e161]:
+            - generic [ref=e162]:
+              - generic [ref=e163]: Step 2
+              - heading "We scan daily" [level=3] [ref=e164]
+              - paragraph [ref=e165]: "Every day, we pull new studies from ClinicalTrials.gov, the world's largest trial registry run by the US National Library of Medicine. Our AI classifies each finding by potential impact: breakthrough, notable, or routine."
+            - generic [ref=e167]:
+              - generic [ref=e168]:
+                - generic [ref=e170]: ClinicalTrials.gov
+                - generic [ref=e171]: 432 new studies
+              - img [ref=e173]
+              - generic [ref=e175]:
+                - generic [ref=e177]: AI Analysis
+                - generic [ref=e178]: scoring...
+              - img [ref=e180]
+              - generic [ref=e187]: Classified by impact
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - generic [ref=e190]: Step 3
+              - heading "You get a weekly briefing" [level=3] [ref=e191]
+              - paragraph [ref=e192]: Every Friday, a personalized research briefing lands in your dashboard and inbox. Not a list of trials, but a clear narrative that explains what happened this week and what it means for your condition.
+            - generic [ref=e193]:
+              - generic [ref=e195]:
+                - generic [ref=e196]:
+                  - generic [ref=e197]:
+                    - generic [ref=e198]: Type 2 Diabetes
+                    - generic [ref=e199]: 1 major
+                  - paragraph [ref=e201]: This week brought an important development in type 2 diabetes research. A Phase 3 trial...
+                - img [ref=e202]
+              - paragraph [ref=e204]: ↑ See the full example above
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - generic [ref=e207]: Step 4
+              - heading "Share with your doctor" [level=3] [ref=e208]
+              - paragraph [ref=e209]: Understanding the situation is one thing. Getting the information to the right people is another. Generate a professional report and send it to your medical team, or bring it to your next appointment.
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - generic [ref=e212]:
+                  - generic [ref=e213]: Clinical Trial Report
+                  - generic [ref=e214]: alerts@trialsalert.com
+                - generic [ref=e215]:
+                  - paragraph [ref=e216]: "Type 2 Diabetes: Weekly Research Summary"
+                  - paragraph [ref=e217]: Dear Dr. Martin, I wanted to share the latest clinical trial developments relevant to my condition...
+                  - generic [ref=e218]:
+                    - generic [ref=e219]: 1 breakthrough
+                    - generic [ref=e220]: 3 notable
+              - paragraph [ref=e221]: Generated in one click. Ready to forward.
+      - generic [ref=e223]:
+        - generic [ref=e224]:
+          - heading "The Missing Piece" [level=2] [ref=e225]
+          - generic [ref=e226]:
+            - paragraph [ref=e227]: Clinical research is evolving at an unprecedented pace.
+            - paragraph [ref=e228]: Thousands of conditions, constant study updates, and ever-changing recruitment windows across the world.
+            - paragraph [ref=e229]: Keeping track of it all is no longer humanly possible.
+            - paragraph [ref=e230]: TrialsAlert fills that gap, giving you access to what matters, when it matters.
+        - generic [ref=e231]:
+          - generic [ref=e232]:
+            - generic [ref=e233]: Standard Search
+            - generic [ref=e234]: + TrialsAlert
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - generic [ref=e237]: Medical Jargon
+              - generic [ref=e238]:
+                - img [ref=e240]
+                - generic [ref=e242]: Plain English Summaries
+            - generic [ref=e243]:
+              - generic [ref=e244]: Manual Refreshing
+              - generic [ref=e245]:
+                - img [ref=e247]
+                - generic [ref=e249]: 24/7 Automated Monitoring
+            - generic [ref=e250]:
+              - generic [ref=e251]: Spreadsheets
+              - generic [ref=e252]:
+                - img [ref=e254]
+                - generic [ref=e256]: Instant Email Alerts
+            - generic [ref=e257]:
+              - generic [ref=e258]: Generic Keywords
+              - generic [ref=e259]:
+                - img [ref=e261]
+                - generic [ref=e263]: Smart Disease Matching
+            - generic [ref=e264]:
+              - generic [ref=e265]: Fragmented Data
+              - generic [ref=e266]:
+                - img [ref=e268]
+                - generic [ref=e270]: One Central Dashboard
+      - generic [ref=e275]:
+        - generic [ref=e276]:
+          - paragraph [ref=e277]: The Problem
+          - heading "Your doctor is only human. No one can track 400,000+ trials alone" [level=2] [ref=e278]:
+            - text: Your doctor is only human.
+            - generic [ref=e279]: No one can track 400,000+ trials alone
+          - generic [ref=e280]:
+            - paragraph [ref=e281]:
+              - text: Doctors manage an overwhelming number of patients every day. They don't have the time to track
+              - strong [ref=e282]: every new trial
+              - text: ", for"
+              - strong [ref=e283]: every diagnosis
+              - text: .
+            - paragraph [ref=e284]:
+              - text: Meanwhile, medical progress is accelerating faster than ever. Breakthroughs happen consistently, and
+              - strong [ref=e285]: missing the right one means losing precious time
+              - text: .
+            - paragraph [ref=e286]:
+              - strong [ref=e287]: Access to the right information is half the cure
+              - text: ", for you & the people you love."
+            - paragraph [ref=e288]:
+              - text: TrialsAlert monitors global clinical research
+              - strong [ref=e289]: in real time, 24/7
+              - text: ", across one or multiple specific conditions, so you're ready to"
+              - strong [ref=e290]: seize the opportunity the moment it appears
+              - text: .
+        - generic [ref=e292]:
+          - generic [ref=e293]:
+            - generic [ref=e294]:
+              - img [ref=e296]
+              - generic [ref=e298]:
+                - generic [ref=e299]: New Match Found
+                - generic [ref=e300]: 2 minutes ago
+            - generic [ref=e301]: High Match
+          - generic [ref=e302]:
+            - 'heading "Phase 3 Trial: Targeted Immunotherapy" [level=3] [ref=e303]'
+            - paragraph [ref=e304]: NCT0482910 • Recruiting • 3.2 miles
+            - paragraph [ref=e305]:
+              - text: This new trial is testing a drug called
+              - strong [ref=e306]: Pembrolizumab
+              - text: . Unlike previous treatments, this specifically targets cells with the
+              - strong [ref=e307]: KRAS-G12C
+              - text: mutation...
+            - button "Link to trial" [ref=e308] [cursor=pointer]
+      - generic [ref=e310]:
+        - generic [ref=e311]:
+          - heading "Simple pricing" [level=2] [ref=e312]
+          - paragraph [ref=e313]: One subscription. Every week. For as long as you need it.
+          - generic [ref=e314]:
+            - generic [ref=e315]: Monthly
+            - button "Toggle billing cycle" [ref=e316] [cursor=pointer]
+            - generic [ref=e318]:
+              - text: Quarterly
+              - generic [ref=e319]: −27%
+        - generic [ref=e320]:
+          - generic [ref=e321]:
+            - generic [ref=e322]:
+              - heading "Single Track" [level=3] [ref=e323]
+              - paragraph [ref=e324]: Track one condition
+            - generic [ref=e325]:
+              - generic [ref=e326]: €11
+              - generic [ref=e327]: /month
+            - paragraph [ref=e328]
+            - list [ref=e329]:
+              - listitem [ref=e330]:
+                - img [ref=e332]
+                - generic [ref=e334]:
+                  - strong [ref=e335]: 1 condition
+                  - text: monitored
+              - listitem [ref=e336]:
+                - img [ref=e338]
+                - generic [ref=e340]: Weekly research briefing
+              - listitem [ref=e341]:
+                - img [ref=e343]
+                - generic [ref=e345]: Impact classification (breakthrough / notable / routine)
+              - listitem [ref=e346]:
+                - img [ref=e348]
+                - generic [ref=e350]: Doctor report sharing
+              - listitem [ref=e351]:
+                - img [ref=e353]
+                - generic [ref=e355]: Full dashboard access
+              - listitem [ref=e356]:
+                - img [ref=e358]
+                - generic [ref=e360]: Cancel anytime
+            - button "Get started" [ref=e361] [cursor=pointer]
+          - generic [ref=e362]:
+            - generic [ref=e363]: Best value
+            - generic [ref=e364]:
+              - heading "Universal Access" [level=3] [ref=e365]
+              - paragraph [ref=e366]: Track up to three conditions
+            - generic [ref=e367]:
+              - generic [ref=e368]: €19
+              - generic [ref=e369]: /month
+            - paragraph [ref=e370]
+            - list [ref=e371]:
+              - listitem [ref=e372]:
+                - img [ref=e374]
+                - generic [ref=e376]:
+                  - strong [ref=e377]: 3 conditions
+                  - text: monitored
+              - listitem [ref=e378]:
+                - img [ref=e380]
+                - generic [ref=e382]: Weekly research briefing
+              - listitem [ref=e383]:
+                - img [ref=e385]
+                - generic [ref=e387]: Impact classification (breakthrough / notable / routine)
+              - listitem [ref=e388]:
+                - img [ref=e390]
+                - generic [ref=e392]: Doctor report sharing
+              - listitem [ref=e393]:
+                - img [ref=e395]
+                - generic [ref=e397]: Full dashboard access
+              - listitem [ref=e398]:
+                - img [ref=e400]
+                - generic [ref=e402]: Cancel anytime
+            - button "Get started" [ref=e403] [cursor=pointer]
+      - generic [ref=e405]:
+        - heading "Trusted by patients and caregivers" [level=2] [ref=e406]
+        - generic [ref=e407]:
+          - generic [ref=e408]:
+            - generic [ref=e409]:
+              - generic [ref=e410]: MS
+              - generic [ref=e411]:
+                - paragraph [ref=e412]: Maria S.
+                - paragraph [ref=e413]: Caregiver, breast cancer
+            - paragraph [ref=e414]: "\"I used to spend hours every week searching for updates on my mother's condition. Now I get everything in one briefing on Friday morning. I brought the report to her oncologist and he didn't even know about that Phase 3 trial. It changed the conversation completely.\""
+            - generic [ref=e415]:
+              - img [ref=e416]
+              - img [ref=e418]
+              - img [ref=e420]
+              - img [ref=e422]
+              - img [ref=e424]
+          - generic [ref=e426]:
+            - generic [ref=e427]:
+              - generic [ref=e428]: JR
+              - generic [ref=e429]:
+                - paragraph [ref=e430]: James R.
+                - paragraph [ref=e431]: Patient, type 2 diabetes
+            - paragraph [ref=e432]: "\"I've been living with type 2 diabetes for 12 years. TrialsAlert is the first service that actually tells me what's new in research without the medical jargon. The weekly briefing is the first email I open every Friday.\""
+            - generic [ref=e433]:
+              - img [ref=e434]
+              - img [ref=e436]
+              - img [ref=e438]
+              - img [ref=e440]
+              - img [ref=e442]
+          - generic [ref=e444]:
+            - generic [ref=e445]:
+              - generic [ref=e446]: SL
+              - generic [ref=e447]:
+                - paragraph [ref=e448]: Sophie L.
+                - paragraph [ref=e449]: Community advocate, psoriasis
+            - paragraph [ref=e450]: "\"I run a psoriasis support group with 400 members. When I share findings from my TrialsAlert briefing, people message me saying it's the most useful thing anyone has posted. It gives me credible, sourced content to share.\""
+            - generic [ref=e451]:
+              - img [ref=e452]
+              - img [ref=e454]
+              - img [ref=e456]
+              - img [ref=e458]
+              - img [ref=e460]
+      - generic [ref=e464]:
+        - button "Where does the data come from?" [ref=e466] [cursor=pointer]:
+          - generic [ref=e467]: Where does the data come from?
+          - img [ref=e469]
+        - button "Is this medical advice?" [ref=e472] [cursor=pointer]:
+          - generic [ref=e473]: Is this medical advice?
+          - img [ref=e475]
+        - button "Can I cancel anytime?" [ref=e478] [cursor=pointer]:
+          - generic [ref=e479]: Can I cancel anytime?
+          - img [ref=e481]
+        - button "What if there's nothing new for my condition?" [ref=e484] [cursor=pointer]:
+          - generic [ref=e485]: What if there's nothing new for my condition?
+          - img [ref=e487]
+        - button "How is this different from searching ClinicalTrials.gov myself?" [ref=e490] [cursor=pointer]:
+          - generic [ref=e491]: How is this different from searching ClinicalTrials.gov myself?
+          - img [ref=e493]
+      - generic [ref=e496]:
+        - heading "Research doesn't stop. Neither should you." [level=2] [ref=e497]:
+          - text: Research doesn't stop.
+          - text: Neither should you.
+        - paragraph [ref=e498]: Join patients and caregivers who stay informed about the science that matters to them.
+        - link "Start monitoring your condition" [ref=e499] [cursor=pointer]:
+          - /url: /signup
+    - contentinfo [ref=e500]:
+      - generic [ref=e501]:
+        - generic [ref=e502]:
+          - generic [ref=e503]:
+            - generic [ref=e505]:
+              - img "TrialsAlert - Clinical Trial Monitoring" [ref=e506]
+              - generic [ref=e507]: TrialsAlert
+            - paragraph [ref=e508]: Making clinical trials accessible to everyone.
+            - paragraph [ref=e510]: Informational use only. Not a substitute for professional medical advice.
+          - generic [ref=e511]:
+            - heading "Product" [level=3] [ref=e512]
+            - list [ref=e513]:
+              - listitem [ref=e514]:
+                - link "How it Works" [ref=e515] [cursor=pointer]:
+                  - /url: "#how-it-works"
+              - listitem [ref=e516]:
+                - link "Pricing" [ref=e517] [cursor=pointer]:
+                  - /url: "#pricing"
+              - listitem [ref=e518]:
+                - link "The Problem" [ref=e519] [cursor=pointer]:
+                  - /url: "#features"
+              - listitem [ref=e520]:
+                - link "FAQ" [ref=e521] [cursor=pointer]:
+                  - /url: "#faq"
+          - generic [ref=e522]:
+            - heading "Explore" [level=3] [ref=e523]
+            - list [ref=e524]:
+              - listitem [ref=e525]:
+                - link "Conditions" [ref=e526] [cursor=pointer]:
+                  - /url: /conditions
+              - listitem [ref=e527]:
+                - link "Guides" [ref=e528] [cursor=pointer]:
+                  - /url: /guides
+              - listitem [ref=e529]:
+                - link "Glossary" [ref=e530] [cursor=pointer]:
+                  - /url: /glossary
+              - listitem [ref=e531]:
+                - link "Blog" [ref=e532] [cursor=pointer]:
+                  - /url: /blog
+          - generic [ref=e533]:
+            - heading "Resources" [level=3] [ref=e534]
+            - list [ref=e535]:
+              - listitem [ref=e536]:
+                - link "About" [ref=e537] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e538]:
+                - link "ClinicalTrials.gov" [ref=e539] [cursor=pointer]:
+                  - /url: https://clinicaltrials.gov
+              - listitem [ref=e540]:
+                - link "Support" [ref=e541] [cursor=pointer]:
+                  - /url: /support
+              - listitem [ref=e542]:
+                - link "support@trialsalert.com" [ref=e543] [cursor=pointer]:
+                  - /url: mailto:support@trialsalert.com
+          - generic [ref=e544]:
+            - heading "Legal" [level=3] [ref=e545]
+            - list [ref=e546]:
+              - listitem [ref=e547]:
+                - link "Privacy Policy" [ref=e548] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e549]:
+                - link "Terms of Service" [ref=e550] [cursor=pointer]:
+                  - /url: /terms
+              - listitem [ref=e551]:
+                - link "Cookie Policy" [ref=e552] [cursor=pointer]:
+                  - /url: /cookie
+              - listitem [ref=e553]:
+                - link "Medical Disclaimer" [ref=e554] [cursor=pointer]:
+                  - /url: /medical
+        - generic [ref=e555]:
+          - paragraph [ref=e556]: © 2026 TrialsAlert. All rights reserved.
+          - generic [ref=e559]: Systems Operational

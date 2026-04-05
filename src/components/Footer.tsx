@@ -1,3 +1,5 @@
+import Logo from "@/components/Logo";
+
 function LinkedInIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -19,11 +21,7 @@ export default function Footer() {
     <footer id="footer" className="border-t border-border px-6 py-8 md:px-10">
       <div className="mx-auto flex max-w-[1100px] flex-col items-center justify-between gap-4 md:flex-row">
         <div className="flex items-center gap-3">
-          <img
-            src="/logo-sprout.png"
-            alt="Root Works"
-            className="h-6 w-auto opacity-50"
-          />
+          <Logo className="h-6 w-auto opacity-40" />
           <p className="text-[13px] text-text-muted">
             &copy; 2026 Root Works
           </p>

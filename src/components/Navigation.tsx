@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
+import Logo from "@/components/Logo";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -50,18 +51,9 @@ export default function Navigation() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-24 max-w-[1100px] items-center justify-between px-6 md:px-10">
+      <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6 md:px-10">
         <a href="#" aria-label="Root Works home" className="flex items-center">
-          <img
-            src="/logo-full.png"
-            alt="Root Works"
-            className="hidden h-16 w-auto md:block lg:h-20"
-          />
-          <img
-            src="/logo-sprout.png"
-            alt="Root Works"
-            className="h-12 w-auto md:hidden"
-          />
+          <Logo className="h-8 w-auto md:h-10" />
         </a>
 
         <div className="hidden items-center gap-8 md:flex">
