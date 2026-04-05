@@ -5,52 +5,49 @@ interface LogoProps {
 export default function Logo({ className = "" }: LogoProps) {
   return (
     <svg
-      viewBox="0 0 540 140"
+      viewBox="0 0 600 160"
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       aria-label="rootworks"
       role="img"
     >
-      {/* Sprout — centered above the letter "t" */}
-      <g fill="#1A1A1A" transform="translate(178, 5)">
-        {/* Left leaf */}
-        <ellipse
-          cx="-7"
-          cy="10"
-          rx="10"
-          ry="4.5"
-          transform="rotate(-35 -7 10)"
+      {/*
+        Sprout — sits above the letter "t" in "rootworks".
+        Design: two teardrop leaves pointing upward and outward
+        from a thin curved stem, like a tiny seedling growing.
+      */}
+      <g fill="#1A1A1A" transform="translate(250, 8)">
+        {/* Left leaf — teardrop, tilted upper-left */}
+        <path
+          d="M 0 28
+             C -16 22, -22 8, -18 -2
+             C -10 4, -2 14, 0 28 Z"
         />
-        {/* Right leaf */}
-        <ellipse
-          cx="7"
-          cy="10"
-          rx="10"
-          ry="4.5"
-          transform="rotate(35 7 10)"
+        {/* Right leaf — teardrop, tilted upper-right */}
+        <path
+          d="M 0 28
+             C 16 22, 22 8, 18 -2
+             C 10 4, 2 14, 0 28 Z"
         />
-        {/* Stem */}
-        <line
-          x1="0"
-          y1="12"
-          x2="0"
-          y2="34"
+        {/* Stem — thin vertical connecting into the top of the 't' */}
+        <path
+          d="M 0 28 L 0 48"
           stroke="#1A1A1A"
-          strokeWidth="2.5"
+          strokeWidth="3"
           strokeLinecap="round"
+          fill="none"
         />
       </g>
 
-      {/* Wordmark */}
+      {/* Wordmark — "rootworks" in Instrument Serif */}
       <text
-        x="10"
-        y="125"
+        x="20"
+        y="145"
         fill="#1A1A1A"
-        className="font-heading"
-        fontSize="110"
+        fontSize="128"
         fontWeight="400"
-        letterSpacing="-2"
-        style={{ fontFamily: "var(--font-instrument-serif), serif" }}
+        letterSpacing="-1"
+        style={{ fontFamily: "var(--font-instrument-serif), 'Times New Roman', serif" }}
       >
         rootworks
       </text>
