@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
+import RisingLines from "@/components/hero-bg/RisingLines";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -106,8 +107,9 @@ export default function RankPage() {
       <Navigation />
       <main className="bg-bg text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
-          <ScrollReveal className="mx-auto max-w-[1000px] text-center">
+        <section className="relative overflow-hidden px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
+          <RisingLines />
+          <ScrollReveal className="relative z-10 mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Rank
             </span>

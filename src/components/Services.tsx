@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 
@@ -90,9 +91,10 @@ export default function Services() {
           className="grid grid-cols-1 gap-4 md:grid-cols-2"
         >
           {services.map((service) => (
-            <article
+            <Link
               key={service.title}
-              className="group rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-6 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
+              href={service.slug}
+              className="group block cursor-pointer rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-6 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
               style={{ transitionTimingFunction: EASE }}
             >
               <h3
@@ -107,13 +109,7 @@ export default function Services() {
               <p className="mt-4 text-[16px] font-light leading-relaxed text-text-dim">
                 {service.description}
               </p>
-              <a
-                href={service.slug}
-                className="mt-6 inline-flex min-h-[44px] items-center text-[14px] lowercase text-text-dim transition-colors duration-300 hover:text-text"
-              >
-                explore →
-              </a>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
