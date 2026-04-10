@@ -77,7 +77,7 @@ export default function Navigation() {
         </div>
 
         <a
-          href="https://calendly.com/victor-rootworks"
+          href="https://calendly.com/victor-rootworks/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-full bg-text px-6 py-2.5 text-sm font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90"

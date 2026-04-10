@@ -37,7 +37,7 @@ export default function CallToAction() {
           Got a project?
         </h2>
         <a
-          href="https://calendly.com/victor-rootworks"
+          href="https://calendly.com/victor-rootworks/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 inline-block rounded-full bg-text px-8 py-4 text-[15px] font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90 md:mt-10"
