@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
-import BlueprintGrid from "@/components/hero-bg/BlueprintGrid";
+import BuildHero from "./BuildHero";
 import {
   Server,
   Globe,
@@ -100,29 +100,7 @@ export default function BuildPage() {
       <Navigation />
       <main className="bg-bg text-text">
         {/* Hero */}
-        <section className="relative overflow-hidden px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
-          <BlueprintGrid />
-          <ScrollReveal className="relative z-10 mx-auto max-w-[1000px] text-center">
-            <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
-              Build
-            </span>
-            <h1 className="mt-6 font-heading text-[clamp(40px,9vw,112px)] leading-[1.02] tracking-[-3px] text-text">
-              From idea to product
-            </h1>
-            <p className="mx-auto mt-8 max-w-[640px] text-[16px] font-light leading-[1.65] text-text-dim md:text-[clamp(17px,1.6vw,20px)]">
-              We turn your vision into a production-ready application.
-              Custom-built, beautifully designed, and entirely yours.
-            </p>
-            <a
-              href={CALENDLY}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:inline-flex md:w-auto md:hover:scale-[1.02]"
-            >
-              Book a Discovery Call
-            </a>
-          </ScrollReveal>
-        </section>
+        <BuildHero />
 
         {/* What we build */}
         <section className="px-6 py-20 md:px-10 md:py-28">
