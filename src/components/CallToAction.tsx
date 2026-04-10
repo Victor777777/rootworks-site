@@ -34,7 +34,7 @@ export default function CallToAction() {
         className="mx-auto max-w-[1100px] text-center opacity-0"
       >
         <h2 className="font-heading text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
-          Got a project?
+          Ready to launch your project?
         </h2>
         <a
           href="https://calendly.com/victor-rootworks/30min"

@@ -70,6 +70,15 @@ export default function Testimonials() {
         ref={sectionRef}
         className="mx-auto max-w-[800px] text-center opacity-0"
       >
+        <div className="mb-12 md:mb-16">
+          <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
+            What they say
+          </span>
+          <h2 className="mt-4 font-heading text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
+            Client feedback
+          </h2>
+        </div>
+
         <div ref={quoteRef}>
           <blockquote className="font-heading text-[clamp(22px,3vw,32px)] italic leading-[1.4] text-text">
             <span className="text-text-muted">&ldquo;</span>
