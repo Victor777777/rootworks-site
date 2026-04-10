@@ -4,10 +4,10 @@ import { useEffect, useState, useRef } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Questions", href: "#faq" },
+  { label: "Services", href: "/#services" },
+  { label: "Work", href: "/#work" },
+  { label: "Process", href: "/#process" },
+  { label: "Questions", href: "/#faq" },
 ];
 
 export default function Navigation() {
@@ -51,7 +51,7 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto flex h-20 max-w-[1100px] items-center justify-between px-6 md:px-10">
-        <a href="#" aria-label="Rootworks home" className="flex items-center">
+        <a href="/" aria-label="Rootworks home" className="flex items-center">
           <img
             src="/logo-full.png"
             alt="Rootworks"
