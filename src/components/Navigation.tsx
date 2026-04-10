@@ -50,17 +50,17 @@ export default function Navigation() {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[1100px] items-center justify-between px-6 md:px-10">
+      <div className="mx-auto flex h-20 max-w-[1100px] items-center justify-between px-6 md:px-10">
         <a href="#" aria-label="Rootworks home" className="flex items-center">
           <img
             src="/logo-full.png"
             alt="Rootworks"
-            className="hidden h-8 w-auto md:block md:h-10"
+            className="hidden h-12 w-auto md:block md:h-14"
           />
           <img
             src="/logo-sprout.png"
             alt="Rootworks"
-            className="h-8 w-auto md:hidden"
+            className="h-10 w-auto md:hidden"
           />
         </a>
 
