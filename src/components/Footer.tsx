@@ -31,10 +31,10 @@ export default function Footer() {
 
         <div className="flex items-center gap-5">
           <a
-            href="mailto:contact@rootworks.ai"
+            href="mailto:victor@rootworks.io"
             className="text-[13px] text-text-muted transition-colors duration-[400ms] hover:text-text"
           >
-            contact@rootworks.ai
+            victor@rootworks.io
           </a>
           <a
             href="https://wa.me/33615092919"

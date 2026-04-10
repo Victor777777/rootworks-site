@@ -196,7 +196,7 @@ Single page, sections in order:
 ### Contact Integration
 - **Calendly:** CTA buttons link to booking page
 - **WhatsApp:** Small icon link in footer or nav (not floating button — too noisy for this aesthetic)
-- **Email:** contact@rootworks.ai
+- **Email:** victor@rootworks.io
 
 ## Hero Image
 

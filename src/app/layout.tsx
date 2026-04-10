@@ -59,7 +59,7 @@ const jsonLd = {
   url: "https://rootworks.ai",
   description:
     "AI-powered full-service agency. Websites, apps, automations, SEO systems, and AI training programs.",
-  email: "contact@rootworks.ai",
+  email: "victor@rootworks.io",
   sameAs: ["https://github.com", "https://linkedin.com"],
 };
 

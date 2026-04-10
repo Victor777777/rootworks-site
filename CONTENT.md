@@ -144,5 +144,5 @@ Next.js · React · TypeScript · GSAP · Three.js · Tailwind · Vercel · Supa
 ## Footer
 - Left: "© 2026 Root Works. AI-powered agency."
 - Right links: Services, Work, Process, Training, Contact
-- Contact: contact@rootworks.ai
+- Contact: victor@rootworks.io
 - Social: GitHub, LinkedIn (add your URLs)
