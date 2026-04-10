@@ -3,7 +3,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
-import KnowledgeRipples from "@/components/hero-bg/KnowledgeRipples";
 import {
   Sparkles,
   PenLine,
@@ -134,9 +133,8 @@ export default function TrainPage() {
       <Navigation />
       <main className="bg-bg text-text">
         {/* Hero */}
-        <section className="relative overflow-hidden px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
-          <KnowledgeRipples />
-          <ScrollReveal className="relative z-10 mx-auto max-w-[1000px] text-center">
+        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
+          <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Train
             </span>

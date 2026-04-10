@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ScrollReveal from "@/components/ScrollReveal";
-import BlueprintGrid from "@/components/hero-bg/BlueprintGrid";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const CALENDLY = "https://calendly.com/victor-rootworks/30min";
@@ -30,10 +29,7 @@ export default function BuildHero() {
       }}
     >
       {/* White overlay so image is a subtle texture */}
-      <div className="absolute inset-0 bg-white/85" />
-
-      {/* Original blueprint grid canvas */}
-      <BlueprintGrid />
+      <div className="absolute inset-0 bg-white/60" />
 
       {/* Hero content */}
       <ScrollReveal className="relative z-10 mx-auto max-w-[1000px] text-center">
