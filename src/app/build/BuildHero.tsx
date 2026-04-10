@@ -11,6 +11,8 @@ const BG_IMAGES = [
   "pawel-czerwinski-9T8fywAF54I-unsplash.jpg",
   "milad-fakurian-HE1_K4_-QT8-unsplash.jpg",
   "jean-philippe-delberghe-75xPHEQBmvA-unsplash.jpg",
+  "chuttersnap-jwmFhIi_W18-unsplash.jpg",
+  "susan-wilkinson-3LwLlMsaC4E-unsplash.jpg",
 ];
 
 export default function BuildHero() {
