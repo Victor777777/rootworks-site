@@ -74,7 +74,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section id="services" className="px-6 py-16 md:px-10 md:pt-8 md:pb-24">
+    <section id="services" className="px-5 py-16 md:px-10 md:pt-8 md:pb-24">
       <div className="mx-auto max-w-[1240px]">
         <div ref={headerRef} className="mb-12 text-center opacity-0 md:mb-16">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -92,7 +92,7 @@ export default function Services() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="group rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-8 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
+              className="group rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-6 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
               style={{ transitionTimingFunction: EASE }}
             >
               <h3
@@ -109,7 +109,7 @@ export default function Services() {
               </p>
               <a
                 href={service.slug}
-                className="mt-6 inline-block text-[14px] lowercase text-text-dim transition-colors duration-300 hover:text-text"
+                className="mt-6 inline-flex min-h-[44px] items-center text-[14px] lowercase text-text-dim transition-colors duration-300 hover:text-text"
               >
                 explore →
               </a>

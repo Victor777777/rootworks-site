@@ -28,19 +28,19 @@ export default function CallToAction() {
   }, []);
 
   return (
-    <section id="cta" className="px-6 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
+    <section id="cta" className="px-5 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
       <div
         ref={sectionRef}
         className="mx-auto max-w-[1100px] text-center opacity-0"
       >
-        <h2 className="font-heading text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
+        <h2 className="font-heading text-[clamp(32px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
           Ready to launch your project?
         </h2>
         <a
           href="https://calendly.com/victor-rootworks/30min"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block rounded-full bg-text px-8 py-4 text-[15px] font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90 md:mt-10"
+          className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"
         >
           Book a Free Call
         </a>

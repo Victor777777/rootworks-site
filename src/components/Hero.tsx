@@ -171,18 +171,18 @@ function MobileHero() {
   }, []);
 
   return (
-    <section id="hero-mobile" className="px-6 pt-36 pb-24 md:hidden">
+    <section id="hero-mobile" className="px-5 pt-32 pb-20 md:hidden">
       <div className="mx-auto max-w-[1100px] text-center">
         <h1
           ref={headlineRef}
-          className="mx-auto max-w-5xl font-heading text-[clamp(44px,10vw,130px)] leading-[0.95] tracking-[-3px] text-text opacity-0"
+          className="mx-auto max-w-5xl font-heading text-[clamp(40px,11vw,130px)] leading-[0.95] tracking-[-3px] text-text opacity-0"
         >
           We build what others quote.
         </h1>
 
         <div
           ref={videoContainerRef}
-          className="mx-auto mt-10 overflow-hidden rounded-2xl opacity-0"
+          className="mx-auto mt-10 overflow-hidden rounded-xl opacity-0"
         >
           <div className="aspect-[16/9]">
             <video

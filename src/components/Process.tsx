@@ -70,7 +70,7 @@ export default function Process() {
   }, []);
 
   return (
-    <section id="process" className="px-6 py-16 md:px-10 md:py-24">
+    <section id="process" className="px-5 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[1100px]">
         <div ref={headerRef} className="mb-12 opacity-0 md:mb-16">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">

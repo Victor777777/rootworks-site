@@ -8,6 +8,19 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Skip Lenis on touch devices — native scroll is smoother on iOS Safari
+    // and avoids ScrollTrigger conflicts.
+    const isTouch =
+      typeof window !== "undefined" &&
+      (window.matchMedia("(pointer: coarse)").matches ||
+        "ontouchstart" in window);
+
+    if (isTouch) {
+      // Still need ScrollTrigger to respond to native scroll events
+      ScrollTrigger.refresh();
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

@@ -115,15 +115,15 @@ export default function AutomatePage() {
       <Navigation />
       <main className="bg-bg text-text">
         {/* Hero */}
-        <section className="px-6 pt-40 pb-24 md:px-10 md:pt-48 md:pb-32">
+        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Automate
             </span>
-            <h1 className="mt-6 font-heading text-[clamp(48px,8vw,112px)] leading-[1.02] tracking-[-3px] text-text">
+            <h1 className="mt-6 font-heading text-[clamp(40px,9vw,112px)] leading-[1.02] tracking-[-3px] text-text">
               Automate what slows you down
             </h1>
-            <p className="mx-auto mt-8 max-w-[720px] text-[clamp(17px,1.6vw,20px)] font-light leading-[1.6] text-text-dim">
+            <p className="mx-auto mt-8 max-w-[720px] text-[16px] font-light leading-[1.65] text-text-dim md:text-[clamp(17px,1.6vw,20px)]">
               Your business is running. You&rsquo;re generating revenue. But
               your team spends hours on tasks that machines could handle in
               seconds. We build the systems that free your time and multiply
@@ -133,7 +133,7 @@ export default function AutomatePage() {
               href={CALENDLY}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-10 inline-block rounded-full bg-text px-8 py-4 text-[15px] font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90"
+              className="mt-10 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:inline-flex md:w-auto md:hover:scale-[1.02]"
             >
               Book a Discovery Call
             </a>
@@ -320,16 +320,16 @@ export default function AutomatePage() {
         </section>
 
         {/* CTA */}
-        <section className="px-6 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
+        <section className="px-5 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
           <ScrollReveal className="mx-auto max-w-[1100px] text-center">
-            <h2 className="font-heading text-[clamp(40px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
+            <h2 className="font-heading text-[clamp(32px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
               Ready to automate?
             </h2>
             <a
               href={CALENDLY}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-block rounded-full bg-text px-8 py-4 text-[15px] font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90 md:mt-10"
+              className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"
             >
               Book a Discovery Call
             </a>
