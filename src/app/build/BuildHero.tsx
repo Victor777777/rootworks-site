@@ -29,7 +29,7 @@ export default function BuildHero() {
       }}
     >
       {/* White overlay so image is a subtle texture */}
-      <div className="absolute inset-0 bg-white/60" />
+      <div className="absolute inset-0 bg-white/35" />
 
       {/* Hero content */}
       <ScrollReveal className="relative z-10 mx-auto max-w-[1000px] text-center">
