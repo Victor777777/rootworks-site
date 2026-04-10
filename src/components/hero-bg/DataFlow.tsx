@@ -2,10 +2,44 @@
 
 import { useEffect, useRef } from "react";
 
+interface Node {
+  x: number;
+  y: number;
+  radius: number;
+  connections: number[];
+}
+
+interface Edge {
+  a: number;
+  b: number;
+  ctrlX: number;
+  ctrlY: number;
+}
+
 interface Packet {
-  lineIdx: number;
-  progress: number;
-  speed: number;
+  from: number;
+  to: number;
+  edgeIdx: number;
+  reversed: boolean;
+  t: number;
+  speed: number; // t per ms
+  pauseUntil: number;
+}
+
+function quadPoint(
+  p0x: number,
+  p0y: number,
+  cx: number,
+  cy: number,
+  p1x: number,
+  p1y: number,
+  t: number
+) {
+  const mt = 1 - t;
+  return {
+    x: mt * mt * p0x + 2 * mt * t * cx + t * t * p1x,
+    y: mt * mt * p0y + 2 * mt * t * cy + t * t * p1y,
+  };
 }
 
 export default function DataFlow() {
@@ -21,10 +55,32 @@ export default function DataFlow() {
 
     let width = 0;
     let height = 0;
-    const LINE_COUNT = 7;
-    let lineYs: number[] = [];
+    let nodes: Node[] = [];
+    let edges: Edge[] = [];
     let packets: Packet[] = [];
-    let intersections: { x: number; y: number; phase: number }[] = [];
+
+    const findEdge = (a: number, b: number) =>
+      edges.findIndex(
+        (e) => (e.a === a && e.b === b) || (e.a === b && e.b === a)
+      );
+
+    const launchPacket = (fromNode: number, now: number): Packet => {
+      const from = nodes[fromNode];
+      const destIdx =
+        from.connections[Math.floor(Math.random() * from.connections.length)];
+      const edgeIdx = findEdge(fromNode, destIdx);
+      const edge = edges[edgeIdx];
+      const reversed = edge.b === fromNode;
+      return {
+        from: fromNode,
+        to: destIdx,
+        edgeIdx,
+        reversed,
+        t: 0,
+        speed: 0.0008 + Math.random() * 0.0006, // ~0.8-1.4s per edge
+        pauseUntil: now,
+      };
+    };
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -37,26 +93,84 @@ export default function DataFlow() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      lineYs = [];
-      for (let i = 0; i < LINE_COUNT; i++) {
-        lineYs.push(((i + 0.5) / LINE_COUNT) * height);
+      // Balanced placement: 4x4 grid, jitter within each cell
+      const cols = 5;
+      const rows = 3;
+      nodes = [];
+      for (let cy = 0; cy < rows; cy++) {
+        for (let cx = 0; cx < cols; cx++) {
+          const cellW = width / cols;
+          const cellH = height / rows;
+          const x = cellW * cx + cellW * (0.2 + Math.random() * 0.6);
+          const y = cellH * cy + cellH * (0.2 + Math.random() * 0.6);
+          nodes.push({
+            x,
+            y,
+            radius: 2 + Math.random() * 1,
+            connections: [],
+          });
+        }
       }
 
+      // Connect each node to 2 nearest neighbors
+      for (let i = 0; i < nodes.length; i++) {
+        const dists: { idx: number; d: number }[] = [];
+        for (let j = 0; j < nodes.length; j++) {
+          if (i === j) continue;
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          dists.push({ idx: j, d: dx * dx + dy * dy });
+        }
+        dists.sort((a, b) => a.d - b.d);
+        for (let k = 0; k < 2; k++) {
+          const j = dists[k].idx;
+          if (!nodes[i].connections.includes(j)) {
+            nodes[i].connections.push(j);
+          }
+          if (!nodes[j].connections.includes(i)) {
+            nodes[j].connections.push(i);
+          }
+        }
+      }
+
+      // Build unique edges with curved control points
+      edges = [];
+      const seen = new Set<string>();
+      for (let i = 0; i < nodes.length; i++) {
+        for (const j of nodes[i].connections) {
+          const key = i < j ? `${i}-${j}` : `${j}-${i}`;
+          if (seen.has(key)) continue;
+          seen.add(key);
+          const a = nodes[i];
+          const b = nodes[j];
+          const midX = (a.x + b.x) / 2;
+          const midY = (a.y + b.y) / 2;
+          // Perpendicular offset for curvature
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const len = Math.sqrt(dx * dx + dy * dy) || 1;
+          const perpX = -dy / len;
+          const perpY = dx / len;
+          const offset = (Math.random() - 0.5) * len * 0.3;
+          edges.push({
+            a: i,
+            b: j,
+            ctrlX: midX + perpX * offset,
+            ctrlY: midY + perpY * offset,
+          });
+        }
+      }
+
+      // Spawn 7 traveling packets
       packets = [];
-      for (let i = 0; i < LINE_COUNT * 2; i++) {
-        packets.push({
-          lineIdx: i % LINE_COUNT,
-          progress: Math.random(),
-          speed: 0.00005 + Math.random() * 0.00007,
-        });
+      const now = performance.now();
+      for (let i = 0; i < 7; i++) {
+        const startNode = Math.floor(Math.random() * nodes.length);
+        if (nodes[startNode].connections.length === 0) continue;
+        const p = launchPacket(startNode, now);
+        p.t = Math.random();
+        packets.push(p);
       }
-
-      intersections = [
-        { x: width * 0.2, y: lineYs[1], phase: 0 },
-        { x: width * 0.45, y: lineYs[4], phase: 0.25 },
-        { x: width * 0.7, y: lineYs[2], phase: 0.5 },
-        { x: width * 0.88, y: lineYs[5], phase: 0.75 },
-      ];
     };
 
     resize();
@@ -80,52 +194,95 @@ export default function DataFlow() {
 
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const inside = mx >= 0 && mx <= width;
 
-      // Horizontal lines
-      ctx.lineWidth = 1;
-      for (let i = 0; i < LINE_COUNT; i++) {
-        const y = lineYs[i];
-        const dist = Math.abs(y - my);
-        const near = inside && dist < 100 ? 1 - dist / 100 : 0;
-        const alpha = 0.04 + near * 0.04;
+      // Find nearest node to cursor
+      let nearestIdx = -1;
+      let nearestDistSq = Infinity;
+      for (let i = 0; i < nodes.length; i++) {
+        const dx = nodes[i].x - mx;
+        const dy = nodes[i].y - my;
+        const d = dx * dx + dy * dy;
+        if (d < nearestDistSq) {
+          nearestDistSq = d;
+          nearestIdx = i;
+        }
+      }
+      const hasMouse = nearestDistSq < 250 * 250;
+
+      // Draw edges
+      ctx.lineWidth = 0.5;
+      for (const e of edges) {
+        const a = nodes[e.a];
+        const b = nodes[e.b];
+        // Distance from midpoint to cursor for brightness
+        const midX = (a.x + b.x) / 2;
+        const midY = (a.y + b.y) / 2;
+        const edx = midX - mx;
+        const edy = midY - my;
+        const edist = Math.sqrt(edx * edx + edy * edy);
+        const near = edist < 150 ? 1 - edist / 150 : 0;
+        const alpha = 0.04 + near * 0.06;
         ctx.strokeStyle = `rgba(26,26,26,${alpha})`;
         ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
+        ctx.moveTo(a.x, a.y);
+        ctx.quadraticCurveTo(e.ctrlX, e.ctrlY, b.x, b.y);
         ctx.stroke();
       }
 
-      // Packets
+      // Update + draw packets
       for (const p of packets) {
-        const y = lineYs[p.lineIdx];
-        const dist = Math.abs(y - my);
-        const boost = inside && dist < 100 ? 1 + (1 - dist / 100) * 2 : 1;
-        p.progress += p.speed * dt * boost;
-        if (p.progress > 1.05) p.progress = -0.05;
-        const x = p.progress * width;
-        if (x < -4 || x > width + 4) continue;
-        const alpha = Math.min(0.15, 0.06 + (boost - 1) * 0.05);
+        if (now < p.pauseUntil) continue;
+        p.t += p.speed * dt;
+        if (p.t >= 1) {
+          // Arrived. Pause, then relaunch from destination.
+          const newStart = p.to;
+          if (nodes[newStart].connections.length === 0) {
+            p.t = 0;
+            p.pauseUntil = now + 200;
+            continue;
+          }
+          const destIdx =
+            nodes[newStart].connections[
+              Math.floor(Math.random() * nodes[newStart].connections.length)
+            ];
+          const edgeIdx = findEdge(newStart, destIdx);
+          const edge = edges[edgeIdx];
+          p.from = newStart;
+          p.to = destIdx;
+          p.edgeIdx = edgeIdx;
+          p.reversed = edge.b === newStart;
+          p.t = 0;
+          p.speed = 0.0008 + Math.random() * 0.0006;
+          p.pauseUntil = now + 200;
+          continue;
+        }
+
+        const edge = edges[p.edgeIdx];
+        const a = nodes[edge.a];
+        const b = nodes[edge.b];
+        const t = p.reversed ? 1 - p.t : p.t;
+        const pos = quadPoint(a.x, a.y, edge.ctrlX, edge.ctrlY, b.x, b.y, t);
+        ctx.fillStyle = "rgba(26,26,26,0.1)";
+        ctx.beginPath();
+        ctx.arc(pos.x, pos.y, 1, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Draw nodes
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        let radius = n.radius;
+        let alpha = 0.06;
+        if (hasMouse && i === nearestIdx) {
+          // Pulse 1 to 1.5 on ~1.2s cycle
+          const pulse = 1 + (Math.sin(now / 200) * 0.5 + 0.5) * 0.5;
+          radius = n.radius * pulse;
+          alpha = 0.15;
+        }
         ctx.fillStyle = `rgba(26,26,26,${alpha})`;
         ctx.beginPath();
-        ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
         ctx.fill();
-      }
-
-      // Pulsing intersections (3s cycle, scale 1 to 1.2)
-      const basePhase = (now / 3000) % 1;
-      for (const p of intersections) {
-        const phase = (basePhase + p.phase) % 1;
-        const scale = 1 + Math.sin(phase * Math.PI * 2) * 0.1;
-        ctx.fillStyle = `rgba(26,26,26,0.05)`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 3 * scale, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = `rgba(26,26,26,0.07)`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 6 * scale, 0, Math.PI * 2);
-        ctx.stroke();
       }
 
       rafId = requestAnimationFrame(draw);

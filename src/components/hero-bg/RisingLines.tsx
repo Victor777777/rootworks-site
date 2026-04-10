@@ -3,9 +3,11 @@
 import { useEffect, useRef } from "react";
 
 interface Particle {
-  lineIdx: number;
-  progress: number;
+  x: number;
+  y: number;
+  radius: number;
   speed: number;
+  baseAlpha: number;
 }
 
 export default function RisingLines() {
@@ -21,9 +23,18 @@ export default function RisingLines() {
 
     let width = 0;
     let height = 0;
-    const LINE_COUNT = 9;
-    let lineXs: number[] = [];
     let particles: Particle[] = [];
+    const COUNT = 50;
+    const INFLUENCE = 120;
+
+    const spawn = (randomY: boolean): Particle => ({
+      x: Math.random() * width,
+      y: randomY ? Math.random() * height : height + Math.random() * 20,
+      radius: 1.5 + Math.random() * 1.5,
+      // 30-60s to cross full height → px/ms
+      speed: 0,
+      baseAlpha: 0.03 + Math.random() * 0.05,
+    });
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
@@ -36,19 +47,12 @@ export default function RisingLines() {
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      lineXs = [];
-      for (let i = 0; i < LINE_COUNT; i++) {
-        lineXs.push(((i + 0.5) / LINE_COUNT) * width);
-      }
-
       particles = [];
-      for (let i = 0; i < LINE_COUNT * 2; i++) {
-        particles.push({
-          lineIdx: i % LINE_COUNT,
-          progress: Math.random(),
-          // 20-40s per full cycle ≈ 0.000025 - 0.00005 progress/ms
-          speed: 0.000025 + Math.random() * 0.000025,
-        });
+      for (let i = 0; i < COUNT; i++) {
+        const p = spawn(true);
+        // Per-particle: 30-60s to travel `height`
+        p.speed = height / (30000 + Math.random() * 30000);
+        particles.push(p);
       }
     };
 
@@ -73,34 +77,31 @@ export default function RisingLines() {
 
       const mx = mouseRef.current.x;
       const my = mouseRef.current.y;
-      const inside = my >= 0 && my <= height;
 
-      // Vertical lines
-      ctx.lineWidth = 1;
-      for (let i = 0; i < LINE_COUNT; i++) {
-        const x = lineXs[i];
-        const dist = Math.abs(x - mx);
-        const near = inside && dist < 120 ? 1 - dist / 120 : 0;
-        const alpha = 0.04 + near * 0.04;
-        ctx.strokeStyle = `rgba(26,26,26,${alpha})`;
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-
-      // Rising particles
       for (const p of particles) {
-        const x = lineXs[p.lineIdx];
-        const dist = Math.abs(x - mx);
-        const boost = inside && dist < 120 ? 1 + (1 - dist / 120) * 2 : 1;
-        p.progress += p.speed * dt * boost;
-        if (p.progress > 1) p.progress -= 1;
-        const y = height - p.progress * height;
-        const alpha = Math.min(0.14, 0.06 + (boost - 1) * 0.05);
+        const dx = p.x - mx;
+        const dy = p.y - my;
+        const distSq = dx * dx + dy * dy;
+        const near =
+          distSq < INFLUENCE * INFLUENCE
+            ? 1 - Math.sqrt(distSq) / INFLUENCE
+            : 0;
+
+        const speedMul = 1 + near * 1; // up to 2x
+        p.y -= p.speed * dt * speedMul;
+
+        if (p.y < -p.radius) {
+          p.x = Math.random() * width;
+          p.y = height + p.radius;
+          p.speed = height / (30000 + Math.random() * 30000);
+          p.radius = 1.5 + Math.random() * 1.5;
+          p.baseAlpha = 0.03 + Math.random() * 0.05;
+        }
+
+        const alpha = p.baseAlpha + near * (0.12 - p.baseAlpha);
         ctx.fillStyle = `rgba(26,26,26,${alpha})`;
         ctx.beginPath();
-        ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
       }
 
