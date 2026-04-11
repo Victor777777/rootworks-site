@@ -148,7 +148,7 @@ export default function FAQ() {
   }, []);
 
   return (
-    <section id="faq" className="bg-bg-warm px-5 py-16 md:px-10 md:py-24">
+    <section id="faq" className="bg-transparent px-5 py-16 md:px-10 md:py-24">
       <div className="mx-auto max-w-[720px]">
         <div ref={headerRef} className="mb-10 opacity-0 md:mb-12">
           <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">

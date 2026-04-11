@@ -152,7 +152,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="bg-bg-warm py-16 md:py-24"
+      className="bg-transparent py-16 md:py-24"
     >
       <div className="mx-auto max-w-[1200px] px-6 md:px-10">
         {/* Header */}

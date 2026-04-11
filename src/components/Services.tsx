@@ -109,6 +109,9 @@ export default function Services() {
               <p className="mt-4 text-[16px] font-light leading-relaxed text-text-dim">
                 {service.description}
               </p>
+              <span className="mt-6 inline-flex min-h-[44px] items-center text-[14px] lowercase text-text-dim transition-colors duration-300 group-hover:text-text">
+                explore →
+              </span>
             </Link>
           ))}
         </div>
