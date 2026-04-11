@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
 import ScrollToTop from "@/components/ScrollToTop";
+import StackLogo from "@/components/StackLogo";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -95,7 +96,28 @@ const geoPoints = [
 
 const stats = [
   { value: "24 → 91", label: "SEO Score improvement" },
+  { value: "0 → 70", label: "GEO Score improvement" },
   { value: "500+", label: "Keywords ranked" },
+];
+
+const stackRow1 = [
+  { name: "Google", slug: "google", color: "4285F4" },
+  { name: "OpenAI", slug: "openai", color: "412991" },
+  { name: "Claude", slug: "anthropic", color: "D97757" },
+  { name: "Perplexity", slug: "perplexity", color: "1FB8CD" },
+];
+
+const stackRow2 = [
+  { name: "React", slug: "react", color: "61DAFB" },
+  { name: "Next.js", slug: "nextdotjs", color: "000000" },
+  { name: "Vercel", slug: "vercel", color: "000000" },
+  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
+];
+
+const stackRow3 = [
+  { name: "Python", slug: "python", color: "3776AB" },
+  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
+  { name: "Puppeteer", slug: "puppeteer", color: "40B5A4" },
 ];
 
 export default function RankPage() {
@@ -107,7 +129,7 @@ export default function RankPage() {
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
+        <section className="px-5 pt-32 pb-10 md:px-10 md:pt-44 md:pb-14">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Rank
@@ -132,7 +154,7 @@ export default function RankPage() {
         </section>
 
         {/* The shift */}
-        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -196,7 +218,7 @@ export default function RankPage() {
         </section>
 
         {/* What we do — all 7 capabilities */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -228,29 +250,39 @@ export default function RankPage() {
         </section>
 
         {/* GEO — standalone featured section */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="rounded-2xl border border-[rgba(0,0,0,0.06)] p-8 md:p-12">
               <div className="text-center">
                 <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
                   AI Search Optimization
                 </span>
-                <h2 className="mt-4 font-heading text-[clamp(32px,4.8vw,56px)] leading-[1.1] tracking-[-1.5px] text-text">
-                  Be found where your customers actually search
+                <h2 className="mt-4 font-heading text-[clamp(44px,7vw,96px)] leading-[1] tracking-[-2.5px] text-text">
+                  AI is the new Google
                 </h2>
+                <p className="mt-4 font-heading text-[clamp(22px,3vw,34px)] italic leading-[1.2] text-text-dim">
+                  You need to rank there too
+                </p>
               </div>
 
-              <div className="mx-auto mt-8 max-w-[720px] space-y-5 text-[16px] font-light leading-[1.8] text-text-dim">
+              <div className="mx-auto mt-10 max-w-[720px] space-y-5 font-heading text-[clamp(20px,2.4vw,26px)] leading-[1.45] text-text-dim">
                 <p>
                   Google is no longer the only search engine that matters.
-                  When your customers ask ChatGPT &ldquo;What is the best
-                  tool for X?&rdquo;, you need to be in that answer. This
-                  is Generative Engine Optimization (GEO).
                 </p>
-                <p className="text-text">Here is what we implement:</p>
+                <p>
+                  When your customers ask ChatGPT &ldquo;What is the best
+                  tool for X?&rdquo;, you need to be in that answer.
+                </p>
+                <p>
+                  This is{" "}
+                  <strong className="font-semibold not-italic text-text">
+                    Generative Engine Optimization (GEO)
+                  </strong>
+                  .
+                </p>
               </div>
 
-              <div className="mt-10 space-y-6">
+              <div className="mt-12 space-y-6">
                 {geoPoints.map((point) => (
                   <div
                     key={point.title}
@@ -270,7 +302,7 @@ export default function RankPage() {
         </section>
 
         {/* Proven results */}
-        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -281,7 +313,7 @@ export default function RankPage() {
               </h2>
             </ScrollReveal>
 
-            <ScrollReveal className="grid grid-cols-1 gap-5 md:grid-cols-2" stagger={0.12}>
+            <ScrollReveal className="grid grid-cols-1 gap-5 md:grid-cols-3" stagger={0.12}>
               {stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -295,6 +327,36 @@ export default function RankPage() {
                   </div>
                 </div>
               ))}
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Our stack */}
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
+          <div className="mx-auto max-w-[1100px]">
+            <ScrollReveal className="text-center">
+              <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
+                Our stack
+              </span>
+              <h2 className="mt-4 font-heading text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-[-2px] text-text">
+                Tools of the craft
+              </h2>
+
+              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow1.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow2.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow3.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
             </ScrollReveal>
           </div>
         </section>

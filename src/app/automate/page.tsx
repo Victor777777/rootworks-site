@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
 import ScrollToTop from "@/components/ScrollToTop";
+import StackLogo from "@/components/StackLogo";
 import {
   FileText,
   Send,
@@ -83,16 +84,27 @@ const process = [
   },
 ];
 
-const stack = [
+const stackRow1 = [
   { name: "n8n", slug: "n8n", color: "EA4B71" },
   { name: "OpenAI", slug: "openai", color: "412991" },
   { name: "Claude", slug: "anthropic", color: "D97757" },
   { name: "Supabase", slug: "supabase", color: "3FCF8E" },
   { name: "Stripe", slug: "stripe", color: "635BFF" },
+];
+
+const stackRow2 = [
   { name: "Slack", slug: "slack", color: "4A154B" },
   { name: "Resend", slug: "resend", color: "000000" },
-  { name: "Zapier", slug: "zapier", color: "FF4A00" },
+  { name: "GitHub", slug: "github", color: "181717" },
+  { name: "Docker", slug: "docker", color: "2496ED" },
   { name: "Make", slug: "make", color: "6D00CC" },
+];
+
+const stackRow3 = [
+  { name: "Python", slug: "python", color: "3776AB" },
+  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
+  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
+  { name: "Zapier", slug: "zapier", color: "FF4A00" },
 ];
 
 const before = [
@@ -120,7 +132,7 @@ export default function AutomatePage() {
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
+        <section className="px-5 pt-32 pb-10 md:px-10 md:pt-44 md:pb-14">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Automate
@@ -146,7 +158,7 @@ export default function AutomatePage() {
         </section>
 
         {/* Where automation fits */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -180,7 +192,7 @@ export default function AutomatePage() {
         </section>
 
         {/* How we automate */}
-        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -220,7 +232,7 @@ export default function AutomatePage() {
         </section>
 
         {/* Stack */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="text-center">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -231,20 +243,18 @@ export default function AutomatePage() {
               </h2>
 
               <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stack.map((tech) => (
-                  <div
-                    key={tech.name}
-                    className="flex items-center gap-3 opacity-70 transition-opacity duration-300 hover:opacity-100"
-                  >
-                    <img
-                      src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
-                      alt={tech.name}
-                      className="h-7 w-7"
-                    />
-                    <span className="text-[14px] font-medium text-text">
-                      {tech.name}
-                    </span>
-                  </div>
+                {stackRow1.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow2.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow3.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
                 ))}
               </div>
 
@@ -257,21 +267,7 @@ export default function AutomatePage() {
         </section>
 
         {/* What changes after automation */}
-        <section className="relative overflow-hidden px-6 py-16 md:px-10 md:py-20">
-          <div
-            className="absolute inset-0 -z-10"
-            style={{
-              background:
-                "linear-gradient(180deg, #F5F3EF 0%, #EFECE4 50%, #F5F3EF 100%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 -z-10 opacity-60"
-            style={{
-              background:
-                "radial-gradient(ellipse at 25% 30%, rgba(29,78,137,0.07) 0%, transparent 55%), radial-gradient(ellipse at 80% 70%, rgba(15,61,46,0.08) 0%, transparent 55%)",
-            }}
-          />
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">

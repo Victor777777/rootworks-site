@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
 import ScrollToTop from "@/components/ScrollToTop";
+import StackLogo from "@/components/StackLogo";
 import {
   Sparkles,
   PenLine,
@@ -127,6 +128,22 @@ const formats = [
   },
 ];
 
+const stackRow1 = [
+  { name: "OpenAI", slug: "openai", color: "412991" },
+  { name: "Claude", slug: "anthropic", color: "D97757" },
+  { name: "Google", slug: "google", color: "4285F4" },
+  { name: "Perplexity", slug: "perplexity", color: "1FB8CD" },
+  { name: "Canva", slug: "canva", color: "00C4CC" },
+];
+
+const stackRow2 = [
+  { name: "Midjourney", slug: "midjourney", color: "000000" },
+  { name: "Figma", slug: "figma", color: "F24E1E" },
+  { name: "Excel", slug: "microsoftexcel", color: "217346" },
+  { name: "Notion", slug: "notion", color: "000000" },
+  { name: "Slack", slug: "slack", color: "4A154B" },
+];
+
 const EASE = "cubic-bezier(0.215, 0.61, 0.355, 1)";
 
 export default function TrainPage() {
@@ -138,7 +155,7 @@ export default function TrainPage() {
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
+        <section className="px-5 pt-32 pb-10 md:px-10 md:pt-44 md:pb-14">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Train
@@ -164,7 +181,7 @@ export default function TrainPage() {
         </section>
 
         {/* The approach */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1240px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -201,7 +218,7 @@ export default function TrainPage() {
         </section>
 
         {/* What we cover */}
-        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -235,7 +252,7 @@ export default function TrainPage() {
         </section>
 
         {/* How a training engagement works */}
-        <section className="px-6 py-16 md:px-10 md:py-20">
+        <section className="px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -275,7 +292,7 @@ export default function TrainPage() {
         </section>
 
         {/* Training formats */}
-        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -303,6 +320,31 @@ export default function TrainPage() {
                   </p>
                 </div>
               ))}
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Our stack */}
+        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
+          <div className="mx-auto max-w-[1100px]">
+            <ScrollReveal className="text-center">
+              <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
+                Tools we train on
+              </span>
+              <h2 className="mt-4 font-heading text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-[-2px] text-text">
+                The AI toolkit
+              </h2>
+
+              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow1.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow2.map((tech) => (
+                  <StackLogo key={tech.name} {...tech} />
+                ))}
+              </div>
             </ScrollReveal>
           </div>
         </section>
