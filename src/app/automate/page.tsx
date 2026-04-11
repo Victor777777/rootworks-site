@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
+import SiteBackground from "@/components/SiteBackground";
 import {
   FileText,
   Send,
@@ -112,8 +113,10 @@ const after = [
 export default function AutomatePage() {
   return (
     <SmoothScroll>
+      <SiteBackground />
+      <div className="relative z-10">
       <Navigation />
-      <main className="bg-bg text-text">
+      <main className="text-text">
         {/* Hero */}
         <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
@@ -175,7 +178,7 @@ export default function AutomatePage() {
         </section>
 
         {/* How we automate */}
-        <section className="bg-bg-warm px-6 py-24 md:px-10 md:py-32">
+        <section className="bg-transparent px-6 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -337,6 +340,7 @@ export default function AutomatePage() {
         </section>
       </main>
       <Footer />
+      </div>
     </SmoothScroll>
   );
 }

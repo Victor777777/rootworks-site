@@ -8,12 +8,12 @@ import Testimonials from "@/components/Testimonials";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-import BgTester from "@/components/BgTester";
+import SiteBackground from "@/components/SiteBackground";
 
 export default function Home() {
   return (
     <SmoothScroll>
-      <BgTester />
+      <SiteBackground />
       <div className="relative z-10">
         <Navigation />
         <main>

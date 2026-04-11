@@ -3,6 +3,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
+import SiteBackground from "@/components/SiteBackground";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -103,8 +104,10 @@ const stats = [
 export default function RankPage() {
   return (
     <SmoothScroll>
+      <SiteBackground />
+      <div className="relative z-10">
       <Navigation />
-      <main className="bg-bg text-text">
+      <main className="text-text">
         {/* Hero */}
         <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
@@ -131,7 +134,7 @@ export default function RankPage() {
         </section>
 
         {/* The shift */}
-        <section className="bg-bg-warm px-6 py-20 md:px-10 md:py-28">
+        <section className="bg-transparent px-6 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -310,7 +313,7 @@ export default function RankPage() {
         </section>
 
         {/* Proven results */}
-        <section className="bg-bg-warm px-6 py-20 md:px-10 md:py-28">
+        <section className="bg-transparent px-6 py-20 md:px-10 md:py-28">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -357,6 +360,7 @@ export default function RankPage() {
         </section>
       </main>
       <Footer />
+      </div>
     </SmoothScroll>
   );
 }
