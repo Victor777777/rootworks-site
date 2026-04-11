@@ -5,10 +5,10 @@ import { ScrollTrigger } from "@/lib/gsap";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Work", href: "/#work" },
-  { label: "Process", href: "/#process" },
-  { label: "Questions", href: "/#faq" },
+  { label: "Build", href: "/build" },
+  { label: "Rank", href: "/rank" },
+  { label: "Automate", href: "/automate" },
+  { label: "Train", href: "/train" },
 ];
 
 const CALENDLY = "https://calendly.com/victor-rootworks/30min";

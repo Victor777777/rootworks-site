@@ -1,34 +1,28 @@
 "use client";
 
 import { useEffect } from "react";
+import { resetPageScroll } from "./SmoothScroll";
 
 export default function ScrollToTop() {
   useEffect(() => {
-    // Disable browser scroll restoration so the fresh page can't snap back
     if (typeof window !== "undefined" && "scrollRestoration" in history) {
       history.scrollRestoration = "manual";
     }
 
-    const jump = () => {
-      try {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-      } catch {
-        window.scrollTo(0, 0);
-      }
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    };
-
-    jump();
-    // Layout + Lenis may hydrate after initial mount; re-assert a couple times
-    const t1 = setTimeout(jump, 0);
-    const t2 = setTimeout(jump, 50);
-    const t3 = setTimeout(jump, 150);
+    resetPageScroll();
+    // Re-assert after Lenis/ScrollTrigger finish hydrating. Next.js, Lenis, and
+    // GSAP's ScrollTrigger.refresh each fire at different times; one of these
+    // callbacks will catch whichever is last.
+    const t1 = setTimeout(resetPageScroll, 0);
+    const t2 = setTimeout(resetPageScroll, 100);
+    const t3 = setTimeout(resetPageScroll, 300);
+    const t4 = setTimeout(resetPageScroll, 1100); // after SmoothScroll's 1s refresh
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
+      clearTimeout(t4);
     };
   }, []);
 

@@ -5,7 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
 import ScrollToTop from "@/components/ScrollToTop";
-import StackLogo from "@/components/StackLogo";
+import TechStack from "@/components/TechStack";
 import {
   FileText,
   Send,
@@ -82,29 +82,6 @@ const process = [
     title: "Deploy and monitor",
     body: "Your automation goes live. We set up monitoring and alerts so you know it's running. If something breaks, you know immediately. The system runs on its own after setup.",
   },
-];
-
-const stackRow1 = [
-  { name: "n8n", slug: "n8n", color: "EA4B71" },
-  { name: "OpenAI", slug: "openai", color: "412991" },
-  { name: "Claude", slug: "anthropic", color: "D97757" },
-  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
-  { name: "Stripe", slug: "stripe", color: "635BFF" },
-];
-
-const stackRow2 = [
-  { name: "Slack", slug: "slack", color: "4A154B" },
-  { name: "Resend", slug: "resend", color: "000000" },
-  { name: "GitHub", slug: "github", color: "181717" },
-  { name: "Docker", slug: "docker", color: "2496ED" },
-  { name: "Make", slug: "make", color: "6D00CC" },
-];
-
-const stackRow3 = [
-  { name: "Python", slug: "python", color: "3776AB" },
-  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
-  { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
-  { name: "Zapier", slug: "zapier", color: "FF4A00" },
 ];
 
 const before = [
@@ -232,39 +209,7 @@ export default function AutomatePage() {
         </section>
 
         {/* Stack */}
-        <section className="px-6 py-10 md:px-10 md:py-14">
-          <div className="mx-auto max-w-[1100px]">
-            <ScrollReveal className="text-center">
-              <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
-                Our automation stack
-              </span>
-              <h2 className="mt-4 font-heading text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-[-2px] text-text">
-                Tools that do the work
-              </h2>
-
-              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow1.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow2.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow3.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-
-              <p className="mx-auto mt-12 max-w-[560px] text-[14px] font-light text-text-dim">
-                We use the right tool for each workflow. Visual builders for
-                speed, custom code for complexity.
-              </p>
-            </ScrollReveal>
-          </div>
-        </section>
+        <TechStack />
 
         {/* What changes after automation */}
         <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">

@@ -5,7 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
 import ScrollToTop from "@/components/ScrollToTop";
-import StackLogo from "@/components/StackLogo";
+import TechStack from "@/components/TechStack";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -98,26 +98,6 @@ const stats = [
   { value: "24 → 91", label: "SEO Score improvement" },
   { value: "0 → 70", label: "GEO Score improvement" },
   { value: "500+", label: "Keywords ranked" },
-];
-
-const stackRow1 = [
-  { name: "Google", slug: "google", color: "4285F4" },
-  { name: "OpenAI", slug: "openai", color: "412991" },
-  { name: "Claude", slug: "anthropic", color: "D97757" },
-  { name: "Perplexity", slug: "perplexity", color: "1FB8CD" },
-];
-
-const stackRow2 = [
-  { name: "React", slug: "react", color: "61DAFB" },
-  { name: "Next.js", slug: "nextdotjs", color: "000000" },
-  { name: "Vercel", slug: "vercel", color: "000000" },
-  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
-];
-
-const stackRow3 = [
-  { name: "Python", slug: "python", color: "3776AB" },
-  { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
-  { name: "Puppeteer", slug: "puppeteer", color: "40B5A4" },
 ];
 
 export default function RankPage() {
@@ -332,34 +312,7 @@ export default function RankPage() {
         </section>
 
         {/* Our stack */}
-        <section className="bg-transparent px-6 py-10 md:px-10 md:py-14">
-          <div className="mx-auto max-w-[1100px]">
-            <ScrollReveal className="text-center">
-              <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
-                Our stack
-              </span>
-              <h2 className="mt-4 font-heading text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-[-2px] text-text">
-                Tools of the craft
-              </h2>
-
-              <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow1.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow2.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stackRow3.map((tech) => (
-                  <StackLogo key={tech.name} {...tech} />
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
+        <TechStack />
 
         {/* CTA */}
         <section className="px-5 pt-4 pb-20 md:px-10 md:pt-6 md:pb-24">
