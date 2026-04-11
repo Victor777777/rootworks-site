@@ -118,7 +118,7 @@ function DesktopHero() {
       className="relative hidden md:block"
       style={{ minHeight: "100vh" }}
     >
-      <div className="px-6 pt-20 pb-10 md:px-10">
+      <div className="px-6 pt-32 pb-10 md:px-10">
         <div
           ref={videoWrapRef}
           className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl opacity-0 shadow-[0_8px_60px_rgba(0,0,0,0.06)]"

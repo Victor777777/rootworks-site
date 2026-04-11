@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
+import ScrollToTop from "@/components/ScrollToTop";
 import {
   Server,
   Globe,
@@ -82,7 +83,7 @@ const process = [
   },
 ];
 
-const stack = [
+const stackRow1 = [
   { name: "Next.js", slug: "nextdotjs", color: "000000" },
   { name: "React", slug: "react", color: "61DAFB" },
   { name: "TypeScript", slug: "typescript", color: "3178C6" },
@@ -90,19 +91,29 @@ const stack = [
   { name: "Supabase", slug: "supabase", color: "3FCF8E" },
   { name: "Stripe", slug: "stripe", color: "635BFF" },
   { name: "Vercel", slug: "vercel", color: "000000" },
+];
+
+const stackRow2 = [
   { name: "GSAP", slug: "greensock", color: "88CE02" },
   { name: "Framer Motion", slug: "framer", color: "0055FF" },
+  { name: "Claude", slug: "anthropic", color: "D97757" },
+  { name: "OpenAI", slug: "openai", color: "412991" },
+  { name: "GitHub", slug: "github", color: "181717" },
+  { name: "Docker", slug: "docker", color: "2496ED" },
+  { name: "n8n", slug: "n8n", color: "EA4B71" },
+  { name: "Figma", slug: "figma", color: "F24E1E" },
 ];
 
 export default function BuildPage() {
   return (
     <SmoothScroll>
+      <ScrollToTop />
       <SiteBackground />
       <div className="relative z-10">
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
+        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Build
@@ -126,7 +137,7 @@ export default function BuildPage() {
         </section>
 
         {/* What we build */}
-        <section className="px-6 py-20 md:px-10 md:py-28">
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -160,7 +171,7 @@ export default function BuildPage() {
         </section>
 
         {/* How we build */}
-        <section className="bg-transparent px-6 py-24 md:px-10 md:py-32">
+        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-12 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -211,7 +222,7 @@ export default function BuildPage() {
         </section>
 
         {/* Our stack */}
-        <section className="px-6 py-20 md:px-10 md:py-28">
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="text-center">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -222,7 +233,24 @@ export default function BuildPage() {
               </h2>
 
               <div className="mt-14 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
-                {stack.map((tech) => (
+                {stackRow1.map((tech) => (
+                  <div
+                    key={tech.name}
+                    className="flex items-center gap-3 opacity-70 transition-opacity duration-300 hover:opacity-100"
+                  >
+                    <img
+                      src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
+                      alt={tech.name}
+                      className="h-7 w-7"
+                    />
+                    <span className="text-[14px] font-medium text-text">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-14">
+                {stackRow2.map((tech) => (
                   <div
                     key={tech.name}
                     className="flex items-center gap-3 opacity-70 transition-opacity duration-300 hover:opacity-100"
@@ -248,7 +276,7 @@ export default function BuildPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-5 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
+        <section className="px-5 pt-4 pb-20 md:px-10 md:pt-6 md:pb-24">
           <ScrollReveal className="mx-auto max-w-[1100px] text-center">
             <h2 className="font-heading text-[clamp(32px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
               Ready to build?

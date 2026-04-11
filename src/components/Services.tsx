@@ -94,7 +94,7 @@ export default function Services() {
             <Link
               key={service.title}
               href={service.slug}
-              className="group block cursor-pointer rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-6 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(0,0,0,0.15)] hover:border-l-text hover:bg-[#f8f6f2] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] md:p-10"
+              className="group block cursor-pointer rounded-2xl border border-[rgba(0,0,0,0.06)] border-l-[3px] border-l-transparent p-6 opacity-0 transition-all duration-500 hover:scale-[1.02] hover:border-[rgba(255,255,255,0.3)] hover:border-l-text hover:shadow-[0_8px_40px_rgba(0,0,0,0.08)] hover:backdrop-blur-sm md:p-10"
               style={{ transitionTimingFunction: EASE }}
             >
               <h3

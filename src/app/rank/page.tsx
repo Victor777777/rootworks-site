@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
+import ScrollToTop from "@/components/ScrollToTop";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -52,21 +53,18 @@ const capabilities = [
     title: "Programmatic SEO at Scale",
     body: "We build automated content systems that generate SEO-optimized pages from your data. Product descriptions, location pages, comparison pages, and X vs Y articles, all generated with quality safeguards. One client went from 0 to 500+ indexed pages targeting unique keywords.",
   },
-];
-
-const capabilitiesTail = [
   {
-    num: "06",
+    num: "05",
     title: "Local SEO and Maps Intelligence",
     body: "For businesses with a physical presence: Google Business Profile optimization, local schema markup, geo-grid rank tracking across your service area, review intelligence, and competitor radius mapping.",
   },
   {
-    num: "07",
+    num: "06",
     title: "Backlink Analysis",
     body: "We analyze your backlink profile: domain authority, referring domains, anchor text distribution, and toxic link identification. We build a strategy for acquiring high-quality backlinks that move your rankings.",
   },
   {
-    num: "08",
+    num: "07",
     title: "Reporting and Monitoring",
     body: "Everything is documented in a professional audit report. SEO Health Score (0 to 100), prioritized action plan, before and after comparisons. Public benchmarks you can run yourself to verify the results.",
   },
@@ -97,19 +95,19 @@ const geoPoints = [
 
 const stats = [
   { value: "24 → 91", label: "SEO Score improvement" },
-  { value: "19/week", label: "Auto-generated blog posts" },
   { value: "500+", label: "Keywords ranked" },
 ];
 
 export default function RankPage() {
   return (
     <SmoothScroll>
+      <ScrollToTop />
       <SiteBackground />
       <div className="relative z-10">
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
+        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Rank
@@ -134,7 +132,7 @@ export default function RankPage() {
         </section>
 
         {/* The shift */}
-        <section className="bg-transparent px-6 py-20 md:px-10 md:py-28">
+        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -197,15 +195,15 @@ export default function RankPage() {
           </div>
         </section>
 
-        {/* What we do — capabilities 1–4 */}
-        <section className="px-6 py-24 md:px-10 md:py-32">
+        {/* What we do — all 7 capabilities */}
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
                 What we do
               </span>
               <h2 className="mt-4 font-heading text-[clamp(36px,5vw,60px)] leading-[1.05] tracking-[-2px] text-text">
-                Eight capabilities, one system
+                Seven capabilities, one system
               </h2>
             </ScrollReveal>
 
@@ -229,48 +227,30 @@ export default function RankPage() {
           </div>
         </section>
 
-        {/* GEO — featured section */}
-        <section className="relative overflow-hidden px-6 py-24 md:px-10 md:py-32">
-          <div
-            className="absolute inset-0 -z-10"
-            style={{
-              background:
-                "linear-gradient(180deg, #F5F3EF 0%, #EFECE4 50%, #F5F3EF 100%)",
-            }}
-          />
-          <div
-            className="absolute inset-0 -z-10 opacity-60"
-            style={{
-              background:
-                "radial-gradient(ellipse at 30% 20%, rgba(29,78,137,0.08) 0%, transparent 55%), radial-gradient(ellipse at 75% 75%, rgba(181,101,29,0.07) 0%, transparent 55%)",
-            }}
-          />
+        {/* GEO — standalone featured section */}
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[900px]">
-            <ScrollReveal>
-              <div className="grid grid-cols-[auto_1fr] gap-6 md:gap-10">
-                <div className="font-heading text-[28px] leading-none text-text-muted">
-                  05
-                </div>
-                <div>
-                  <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
-                    The big one
-                  </span>
-                  <h3 className="mt-3 font-heading text-[clamp(32px,4.5vw,52px)] leading-[1.1] tracking-[-1px] text-text">
-                    AI Search Optimization (GEO)
-                  </h3>
-                  <div className="mt-6 space-y-5 text-[16px] font-light leading-[1.8] text-text-dim">
-                    <p>
-                      Google is no longer the only search engine that matters.
-                      When your customers ask ChatGPT &ldquo;What is the best
-                      tool for X?&rdquo;, you need to be in that answer. This
-                      is Generative Engine Optimization (GEO).
-                    </p>
-                    <p className="text-text">Here is what we implement:</p>
-                  </div>
-                </div>
+            <ScrollReveal className="rounded-2xl border border-[rgba(0,0,0,0.06)] p-8 md:p-12">
+              <div className="text-center">
+                <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
+                  AI Search Optimization
+                </span>
+                <h2 className="mt-4 font-heading text-[clamp(32px,4.8vw,56px)] leading-[1.1] tracking-[-1.5px] text-text">
+                  Be found where your customers actually search
+                </h2>
               </div>
 
-              <div className="mt-10 ml-0 space-y-6 md:ml-[68px]">
+              <div className="mx-auto mt-8 max-w-[720px] space-y-5 text-[16px] font-light leading-[1.8] text-text-dim">
+                <p>
+                  Google is no longer the only search engine that matters.
+                  When your customers ask ChatGPT &ldquo;What is the best
+                  tool for X?&rdquo;, you need to be in that answer. This
+                  is Generative Engine Optimization (GEO).
+                </p>
+                <p className="text-text">Here is what we implement:</p>
+              </div>
+
+              <div className="mt-10 space-y-6">
                 {geoPoints.map((point) => (
                   <div
                     key={point.title}
@@ -289,31 +269,8 @@ export default function RankPage() {
           </div>
         </section>
 
-        {/* Capabilities 6–8 */}
-        <section className="px-6 py-24 md:px-10 md:py-32">
-          <div className="mx-auto max-w-[900px]">
-            <ScrollReveal className="space-y-16" stagger={0.1}>
-              {capabilitiesTail.map((cap) => (
-                <div key={cap.num} className="grid grid-cols-[auto_1fr] gap-6 md:gap-10">
-                  <div className="font-heading text-[28px] leading-none text-text-muted">
-                    {cap.num}
-                  </div>
-                  <div>
-                    <h3 className="font-heading text-[clamp(26px,3.2vw,36px)] leading-[1.15] text-text">
-                      {cap.title}
-                    </h3>
-                    <p className="mt-4 text-[16px] font-light leading-[1.75] text-text-dim">
-                      {cap.body}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </ScrollReveal>
-          </div>
-        </section>
-
         {/* Proven results */}
-        <section className="bg-transparent px-6 py-20 md:px-10 md:py-28">
+        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-16">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -324,7 +281,7 @@ export default function RankPage() {
               </h2>
             </ScrollReveal>
 
-            <ScrollReveal className="grid grid-cols-1 gap-5 md:grid-cols-3" stagger={0.12}>
+            <ScrollReveal className="grid grid-cols-1 gap-5 md:grid-cols-2" stagger={0.12}>
               {stats.map((stat) => (
                 <div
                   key={stat.label}
@@ -343,7 +300,7 @@ export default function RankPage() {
         </section>
 
         {/* CTA */}
-        <section className="px-5 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
+        <section className="px-5 pt-4 pb-20 md:px-10 md:pt-6 md:pb-24">
           <ScrollReveal className="mx-auto max-w-[1100px] text-center">
             <h2 className="font-heading text-[clamp(32px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
               Ready to be found?

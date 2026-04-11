@@ -51,11 +51,11 @@ function Slide({ project }: { project: Project }) {
         }}
       >
         {/* Image — top, large */}
-        <div className="overflow-hidden">
+        <div className="relative aspect-[16/9] w-full overflow-hidden">
           <img
             src={project.image}
             alt={project.category}
-            className="aspect-[16/9] w-full object-cover object-top"
+            className="absolute inset-0 block h-full w-full object-cover object-top"
             loading="lazy"
           />
         </div>

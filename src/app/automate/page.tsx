@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollReveal from "@/components/ScrollReveal";
 import SiteBackground from "@/components/SiteBackground";
+import ScrollToTop from "@/components/ScrollToTop";
 import {
   FileText,
   Send,
@@ -113,12 +114,13 @@ const after = [
 export default function AutomatePage() {
   return (
     <SmoothScroll>
+      <ScrollToTop />
       <SiteBackground />
       <div className="relative z-10">
       <Navigation />
       <main className="text-text">
         {/* Hero */}
-        <section className="px-5 pt-32 pb-20 md:px-10 md:pt-48 md:pb-32">
+        <section className="px-5 pt-32 pb-16 md:px-10 md:pt-44 md:pb-20">
           <ScrollReveal className="mx-auto max-w-[1000px] text-center">
             <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
               Automate
@@ -144,7 +146,7 @@ export default function AutomatePage() {
         </section>
 
         {/* Where automation fits */}
-        <section className="px-6 py-20 md:px-10 md:py-28">
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="mb-14 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -178,7 +180,7 @@ export default function AutomatePage() {
         </section>
 
         {/* How we automate */}
-        <section className="bg-transparent px-6 py-24 md:px-10 md:py-32">
+        <section className="bg-transparent px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[900px]">
             <ScrollReveal className="mb-16 text-center md:mb-20">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -218,7 +220,7 @@ export default function AutomatePage() {
         </section>
 
         {/* Stack */}
-        <section className="px-6 py-20 md:px-10 md:py-28">
+        <section className="px-6 py-16 md:px-10 md:py-20">
           <div className="mx-auto max-w-[1100px]">
             <ScrollReveal className="text-center">
               <span className="text-[11px] font-medium uppercase tracking-[4px] text-text-muted">
@@ -255,7 +257,7 @@ export default function AutomatePage() {
         </section>
 
         {/* What changes after automation */}
-        <section className="relative overflow-hidden px-6 py-24 md:px-10 md:py-32">
+        <section className="relative overflow-hidden px-6 py-16 md:px-10 md:py-20">
           <div
             className="absolute inset-0 -z-10"
             style={{
@@ -323,7 +325,7 @@ export default function AutomatePage() {
         </section>
 
         {/* CTA */}
-        <section className="px-5 pt-6 pb-24 md:px-10 md:pt-8 md:pb-32">
+        <section className="px-5 pt-4 pb-20 md:px-10 md:pt-6 md:pb-24">
           <ScrollReveal className="mx-auto max-w-[1100px] text-center">
             <h2 className="font-heading text-[clamp(32px,6vw,72px)] leading-[1.05] tracking-[-2px] text-text">
               Ready to automate?
