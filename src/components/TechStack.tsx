@@ -24,7 +24,7 @@ const stackRow3 = [
   { name: "Node.js", slug: "nodedotjs", color: "5FA04E" },
   { name: "PostgreSQL", slug: "postgresql", color: "4169E1" },
   { name: "Python", slug: "python", color: "3776AB" },
-  { name: "Slack", slug: "slack", color: "4A154B" },
+  { name: "Cloudflare", slug: "cloudflare", color: "F38020" },
   { name: "Resend", slug: "resend", color: "000000" },
 ];
 
