@@ -142,7 +142,7 @@ Next.js · React · TypeScript · GSAP · Three.js · Tailwind · Vercel · Supa
 - Button: "Book a Free Call" → links to Calendly
 
 ## Footer
-- Left: "© 2026 Root Works. AI-powered agency."
+- Left: "© 2026 Rootworks. AI-powered agency."
 - Right links: Services, Work, Process, Training, Contact
 - Contact: victor@rootworks.io
 - Social: GitHub, LinkedIn (add your URLs)

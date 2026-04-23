@@ -18,29 +18,36 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Root Works — AI-Powered Agency",
+  title: "Rootworks | AI-Powered Agency",
   description:
-    "We design, build, and ship from concept to code. Websites, apps, automations, and AI training — shipped in days, not months.",
+    "We design, build, and ship from concept to code. Websites, apps, automations, and AI training, shipped in days, not months.",
   icons: {
     icon: "/logo-sprout.png",
     apple: "/logo-sprout.png",
   },
   openGraph: {
-    title: "Root Works — AI-Powered Agency",
+    title: "Rootworks | AI-Powered Agency",
     description:
       "We design, build, and ship from concept to code. Senior team, AI-native edge, soul-driven craft.",
     url: "https://rootworks.ai",
-    siteName: "Root Works",
+    siteName: "Rootworks",
     locale: "en_US",
     type: "website",
-    images: ["/logo-full.png"],
+    images: [
+      {
+        url: "https://rootworks.io/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Rootworks — AI-Powered Agency",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Root Works — AI-Powered Agency",
+    title: "Rootworks | AI-Powered Agency",
     description:
-      "We design, build, and ship from concept to code. Shipped in days, not months.",
-    images: ["/logo-full.png"],
+      "We design, build, and ship from concept to code. Senior team, AI-native edge, soul-driven craft.",
+    images: ["https://rootworks.io/og-image.png"],
   },
   metadataBase: new URL("https://rootworks.ai"),
   alternates: {
@@ -55,7 +62,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Root Works",
+  name: "Rootworks",
   url: "https://rootworks.ai",
   description:
     "AI-powered full-service agency. Websites, apps, automations, SEO systems, and AI training programs.",

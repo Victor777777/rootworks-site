@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Build — Root Works",
+  title: "Build | Rootworks",
   description:
     "From idea to product. We turn your vision into a production-ready application. Custom-built, beautifully designed, and entirely yours.",
 };

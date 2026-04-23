@@ -9,7 +9,7 @@ import TechStack from "@/components/TechStack";
 import { Check, X } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Rank — Root Works",
+  title: "Rank | Rootworks",
   description:
     "Rank where you belong. Full-stack SEO and AI search optimization for Google, ChatGPT, Perplexity, Gemini, and every major assistant.",
 };

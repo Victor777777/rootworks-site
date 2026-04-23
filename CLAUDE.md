@@ -1,10 +1,10 @@
 # RootWorks Agency Website
 
 ## Project Overview
-rootworks.ai — The website for Root Works, an AI-powered full-service agency. We build websites, apps, automations, SEO systems, and AI training programs. The site must convert visitors into booked calls.
+rootworks.ai — The website for Rootworks, an AI-powered full-service agency. We build websites, apps, automations, SEO systems, and AI training programs. The site must convert visitors into booked calls.
 
 ## Brand Identity
-- **Name:** Root Works
+- **Name:** Rootworks
 - **Tagline:** "We build what others quote."
 - **Tone:** Quiet confidence. Let the work speak. Minimal words, maximum impact. Think More Air meets Linear — editorial restraint, premium feel, zero fluff.
 
@@ -121,7 +121,7 @@ Light theme:
 
 **Footer:**
 - Minimal. Single line or two lines max.
-- © 2026 Root Works. + contact links
+- © 2026 Rootworks. + contact links
 - No multi-column footer grid — keep it ultra clean
 
 ### Animation Principles — Subtle is Sexy

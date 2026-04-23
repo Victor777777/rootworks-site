@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Automate — Root Works",
+  title: "Automate | Rootworks",
   description:
     "Automate what slows you down. Custom AI pipelines and workflow automations that free your time and multiply your output.",
 };

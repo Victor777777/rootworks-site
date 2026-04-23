@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Train — Root Works",
+  title: "Train | Rootworks",
   description:
     "Your team, upgraded. Intensive hands-on AI training that transforms how your team works. Real tools, real data, real results.",
 };
