@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BOOKING_URL } from "@/lib/links";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -14,10 +15,8 @@ export const metadata: Metadata = {
     "Rank where you belong. Full-stack SEO and AI search optimization for Google, ChatGPT, Perplexity, Gemini, and every major assistant.",
 };
 
-const CALENDLY = "https://calendly.com/victor-rootworks/30min";
-
 const traditional = [
-  "Audit takes weeks",
+  "Diagnostic takes weeks",
   "Recommendations delivered as a PDF",
   "Client must implement themselves",
   "Months before changes go live",
@@ -26,7 +25,7 @@ const traditional = [
 ];
 
 const ourApproach = [
-  "Audit completed and implemented in the same session",
+  "Diagnostic completed and implemented in the same session",
   "Every fix deployed directly, not just recommended",
   "Fixed project fee, no retainer",
   "Results visible on public benchmarks you can verify yourself",
@@ -36,7 +35,7 @@ const ourApproach = [
 const capabilities = [
   {
     num: "01",
-    title: "Full-Stack Technical SEO Audit",
+    title: "Full-Stack Technical SEO Diagnostic",
     body: "We crawl your entire site and analyze every page across 7 categories: crawlability, indexability, Core Web Vitals (LCP, CLS, INP), mobile optimization, security headers, and structured data. Every issue is identified, prioritized, and fixed. Not recommended. Fixed.",
   },
   {
@@ -67,7 +66,7 @@ const capabilities = [
   {
     num: "07",
     title: "Reporting and Monitoring",
-    body: "Everything is documented in a professional audit report. SEO Health Score (0 to 100), prioritized action plan, before and after comparisons. Public benchmarks you can run yourself to verify the results.",
+    body: "Everything is documented in a professional diagnostic report. SEO Health Score (0 to 100), prioritized action plan, before and after comparisons. Public benchmarks you can run yourself to verify the results.",
   },
 ];
 
@@ -123,12 +122,12 @@ export default function RankPage() {
               does not show up there, it does not exist. We make sure it does.
             </p>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:inline-flex md:w-auto md:hover:scale-[1.02]"
             >
-              Get a Free Audit
+              Get a Free Diagnostic
             </a>
           </ScrollReveal>
         </section>
@@ -175,7 +174,7 @@ export default function RankPage() {
                   Our Approach
                 </span>
                 <h3 className="mt-3 font-heading text-[24px] leading-[1.2] text-text">
-                  Audit, fix, deploy
+                  Diagnostic, fix, deploy
                 </h3>
                 <ul className="mt-6 space-y-4">
                   {ourApproach.map((item) => (
@@ -321,12 +320,12 @@ export default function RankPage() {
               Ready to be found?
             </h2>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"
             >
-              Get a Free Audit
+              Get a Free Diagnostic
             </a>
           </ScrollReveal>
         </section>

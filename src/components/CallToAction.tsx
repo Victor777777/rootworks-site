@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap, EASE_PRIMARY } from "@/lib/gsap";
+import { BOOKING_URL } from "@/lib/links";
 
 export default function CallToAction() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -37,7 +38,7 @@ export default function CallToAction() {
           Ready to launch your project?
         </h2>
         <a
-          href="https://calendly.com/victor-rootworks/30min"
+          href={BOOKING_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"

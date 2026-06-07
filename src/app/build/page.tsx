@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BOOKING_URL } from "@/lib/links";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -20,8 +21,6 @@ export const metadata: Metadata = {
   description:
     "From idea to product. We turn your vision into a production-ready application. Custom-built, beautifully designed, and entirely yours.",
 };
-
-const CALENDLY = "https://calendly.com/victor-rootworks/30min";
 
 const whatWeBuild = [
   {
@@ -106,7 +105,7 @@ export default function BuildPage() {
               Custom-built, beautifully designed, and entirely yours.
             </p>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:inline-flex md:w-auto md:hover:scale-[1.02]"
@@ -211,7 +210,7 @@ export default function BuildPage() {
               Ready to build?
             </h2>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"

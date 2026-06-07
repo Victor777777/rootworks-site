@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ScrollTrigger } from "@/lib/gsap";
+import { BOOKING_URL } from "@/lib/links";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
@@ -10,8 +11,6 @@ const navLinks = [
   { label: "Automate", href: "/automate" },
   { label: "Train", href: "/train" },
 ];
-
-const CALENDLY = "https://calendly.com/victor-rootworks/30min";
 
 export default function Navigation() {
   const [pastHero, setPastHero] = useState(false);
@@ -101,7 +100,7 @@ export default function Navigation() {
           </div>
 
           <a
-            href={CALENDLY}
+            href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden rounded-full bg-text px-6 py-2.5 text-sm font-medium text-white transition-all duration-[400ms] hover:scale-[1.02] hover:opacity-90 md:inline-block"
@@ -168,7 +167,7 @@ export default function Navigation() {
 
           <div className="px-6 pb-10">
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}

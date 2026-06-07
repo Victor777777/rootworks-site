@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BOOKING_URL } from "@/lib/links";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -23,8 +24,6 @@ export const metadata: Metadata = {
   description:
     "Your team, upgraded. Intensive hands-on AI training that transforms how your team works. Real tools, real data, real results.",
 };
-
-const CALENDLY = "https://calendly.com/victor-rootworks/30min";
 
 const principles = [
   {
@@ -154,7 +153,7 @@ export default function TrainPage() {
               real data, real results from the first session.
             </p>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-10 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:inline-flex md:w-auto md:hover:scale-[1.02]"
@@ -318,7 +317,7 @@ export default function TrainPage() {
               Ready to upgrade your team?
             </h2>
             <a
-              href={CALENDLY}
+              href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 flex min-h-[56px] w-full items-center justify-center rounded-full bg-text px-8 text-[15px] font-medium text-white transition-all duration-[400ms] hover:opacity-90 md:mt-10 md:inline-flex md:w-auto md:hover:scale-[1.02]"
